@@ -8,7 +8,7 @@ public class OnHoverBorder : MonoBehaviour
     void OnMouseOver()
     {
         GetComponent<Renderer>().material = border;
-        if (Input.GetKeyDown())
+       
     }
 
 

@@ -72,7 +72,9 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
-    <Compile Include="Assets\Scripts\HighlightObject.cs" />
+    <Compile Include="Assets\Scripts\CharacterControllerTest.cs" />
+    <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
+    <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/User/Documents/GitHub/Bandwidth/Bandwidth - jack scripts and assets/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
