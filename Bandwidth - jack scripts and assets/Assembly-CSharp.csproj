@@ -73,6 +73,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\CharacterControllerTest.cs" />
+    <Compile Include="Assets\Scripts\FirstPersonControllerCopy.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
