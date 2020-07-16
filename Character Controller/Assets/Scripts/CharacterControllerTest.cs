@@ -49,12 +49,12 @@ public class CharacterControllerTest : MonoBehaviour
         movement.y -= gravity * Time.deltaTime;
         fpsController.Move(movement * Time.deltaTime);
         //Time Fiddler
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
         {
             timeManager.SlowTime();
             moveSpeed = 300.0f;
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A))
+        else
         {
             timeManager.ReturnTime();
             moveSpeed = 6.0f;
