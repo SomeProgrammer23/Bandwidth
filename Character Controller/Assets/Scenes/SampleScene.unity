@@ -1960,9 +1960,9 @@ GameObject:
   - component: {fileID: 1774329143}
   - component: {fileID: 1774329142}
   - component: {fileID: 1774329146}
-  - component: {fileID: 1774329147}
   - component: {fileID: 1774329148}
   - component: {fileID: 1774329149}
+  - component: {fileID: 1774329147}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -2071,12 +2071,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1774329141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2504721cc2ed4e34d8c6c5d412fd0df4, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d74fa81605e5342b312aad5e3661ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 963194225}
   body: {fileID: 1774329141}
-  lookSpeed: 4
+  lookSpeed: 3
   moveSpeed: 6
   jumpSpeed: 8
   gravity: 20
