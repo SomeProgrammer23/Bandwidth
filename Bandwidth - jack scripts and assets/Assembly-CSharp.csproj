@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\CharacterControllerTest.cs" />
     <Compile Include="Assets\Scripts\FirstPersonControllerCopy.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
+    <Compile Include="Assets\Scripts\Pickup.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">
