@@ -5,14 +5,15 @@ public class OnHoverBorder : MonoBehaviour
     public Material border;
     public Material nonBorder;
     private bool pickup;
-    public GameObject hand;
+    //public GameObject hand;
     public float throwForce = 400.0f;
     public bool held;
     private Vector3 holdPos = new Vector3(0,0,0);
-
-    private Vector2 rotation;
-    public Transform heldItem;
-    public float Speed =3.0f;
+    //public Transform camPos;
+    private Transform camPos;
+    private Transform looker;
+    public float range = 1f;
+    public Transform objectPoint;
 
     void OnMouseOver()
     {
@@ -27,9 +28,16 @@ public class OnHoverBorder : MonoBehaviour
         pickup = false;
     }
 
+    private void Start()
+    {
+        camPos = GameObject.Find("FirstPersonCharacter").transform;
+        looker = GameObject.Find("Looker").transform;
+    }
+
     void Update()
     {
-        if(pickup == true)
+
+        if (pickup == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -38,25 +46,35 @@ public class OnHoverBorder : MonoBehaviour
                 GetComponent<Rigidbody>().velocity = holdPos;
                 GetComponent<Rigidbody>().angularVelocity = holdPos;
                 held = true;
-                this.transform.position = hand.transform.position;
-                //this.transform.localRotation = Quaternion.Euler(holdPos);
-
-                rotation.y += Input.GetAxis("Mouse X") * Speed * -Time.unscaledDeltaTime;
-                rotation.x += -Input.GetAxis("Mouse Y") * Speed * -Time.unscaledDeltaTime;
-                heldItem.localRotation = Quaternion.AngleAxis(rotation.x, Vector3.up);
-                heldItem.localRotation = Quaternion.AngleAxis(rotation.y, Vector3.right);
-
-                //heldItem.transform.LookAt(transform.forward);
+                //this.transform.position = hand.transform.position;
+                this.transform.position = GameObject.Find("PlayerHand").transform.position;
+                //objectPoint.transform.LookAt(looker);
+                this.transform.LookAt(looker);
 
                 this.transform.parent = GameObject.Find("PlayerHand").transform;
             }
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit/*, range*/))
+        {
+            looker.transform.position = hit.point;
+            if(held == true)
+            {
+                objectPoint.transform.LookAt(looker);
+            }
+            else
+            {
+                return;
+            }
+        }
+
         if (held == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 //GetComponent<Rigidbody>().AddForce(0, 0, throwForce, ForceMode.Impulse);
-                GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(camPos.forward * throwForce, ForceMode.Impulse);
                 this.transform.parent = null;
                 GetComponent<Collider>().enabled = true;
                 GetComponent<Rigidbody>().useGravity = true;
