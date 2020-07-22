@@ -50,6 +50,15 @@ public class CharacterControllerTest : MonoBehaviour
             timeManager.ReturnTime();
             //moveSpeed = 6.0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed / 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed * 2;
+        }
     }
 
     private void FixedUpdate()
@@ -61,10 +70,10 @@ public class CharacterControllerTest : MonoBehaviour
             movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
             movement = transform.TransformDirection(movement);
             //movement *= moveSpeed;
-            if (Input.GetButtonDown("Jump"))
-            {
-                movement.y = jumpSpeed;
-            }
+            //if (Input.GetButtonDown("Jump"))
+            //{
+            //    movement.y = jumpSpeed;
+            //}
 
         }
         movement.Normalize();
