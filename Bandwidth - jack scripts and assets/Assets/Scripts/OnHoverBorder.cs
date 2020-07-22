@@ -12,21 +12,24 @@ public class OnHoverBorder : MonoBehaviour
     //public Transform camPos;
     private Transform camPos;
     private Transform looker;
-    public float range = 1f;
     public Transform objectPoint;
+    static public bool singlePickup = true;
+    public float range = 3f;
 
-    void OnMouseOver()
-    {
-        GetComponent<Renderer>().material = border;
-        pickup = true;
-    }
+    private InstigatedPickups InstigatedPickups;
+
+    //void OnMouseOver()
+    //{
+    //    GetComponent<Renderer>().material = border;
+    //    pickup = true;
+    //}
 
 
-    void OnMouseExit()
-    {
-        GetComponent<Renderer>().material = nonBorder;
-        pickup = false;
-    }
+    //void OnMouseExit()
+    //{
+    //    GetComponent<Renderer>().material = nonBorder;
+    //    pickup = false;
+    //}
 
     private void Start()
     {
@@ -37,9 +40,31 @@ public class OnHoverBorder : MonoBehaviour
     void Update()
     {
 
+        RaycastHit detect;
+        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out detect, range))
+        {
+            if (detect.collider == gameObject.GetComponent<Collider>())
+            {
+                GetComponent<Renderer>().material = border;
+                pickup = true;
+            }
+            else if (detect.collider == gameObject.GetComponent<Collider>() == false)
+            {
+                GetComponent<Renderer>().material = nonBorder;
+                pickup = false;
+            }
+            
+        }
+        else
+        {
+            GetComponent<Renderer>().material = nonBorder;
+            pickup = false;
+        }
+
+
         if (pickup == true)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && singlePickup == true)
             {
                 GetComponent<Collider>().enabled = false;
                 GetComponent<Rigidbody>().useGravity = false;
@@ -49,39 +74,50 @@ public class OnHoverBorder : MonoBehaviour
                 //this.transform.position = hand.transform.position;
                 this.transform.position = GameObject.Find("PlayerHand").transform.position;
                 //objectPoint.transform.LookAt(looker);
-                this.transform.LookAt(looker);
 
                 this.transform.parent = GameObject.Find("PlayerHand").transform;
+
+                Invoke("PickupCheck", 0.001f);
+                //singlePickup = false;
+                InstigatedPickups.singlePickup = false;
             }
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit/*, range*/))
+        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit, 10000))
         {
             looker.transform.position = hit.point;
-            if(held == true)
+            if (held == true)
             {
                 objectPoint.transform.LookAt(looker);
-            }
-            else
-            {
-                return;
+                this.transform.LookAt(looker);
             }
         }
 
         if (held == true)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && singlePickup == false)
             {
                 //GetComponent<Rigidbody>().AddForce(0, 0, throwForce, ForceMode.Impulse);
-                GetComponent<Rigidbody>().AddForce(camPos.forward * throwForce, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(objectPoint.forward * throwForce, ForceMode.Impulse);
                 this.transform.parent = null;
                 GetComponent<Collider>().enabled = true;
                 GetComponent<Rigidbody>().useGravity = true;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
                 held = false;
+                //singlePickup = true;
+                Invoke("PickupCheckAgain", 0.001f);
+                InstigatedPickups.singlePickup = true;
             }
         }
+    }
+    void PickupCheck()
+    {
+        singlePickup = false;
+    }
+    void PickupCheckAgain()
+    {
+        singlePickup = true;
     }
 }
