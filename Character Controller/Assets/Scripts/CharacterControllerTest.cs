@@ -67,19 +67,15 @@ public class CharacterControllerTest : MonoBehaviour
         if (fpsController.isGrounded)
         {
             movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
-            movement.Normalize();
             movement = transform.TransformDirection(movement);
             movement *= moveSpeed;
             //zMove = transform.forward * zIn;
             //xMove = transform.right * xIn;
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                movement.y = jumpSpeed;
-            }
+            
 
         }
-        
+        movement.Normalize();
         movement.y -= gravity * Time.deltaTime;
         fpsController.Move(movement * Time.unscaledDeltaTime * moveSpeed);
 
