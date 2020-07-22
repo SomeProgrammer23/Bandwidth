@@ -16,11 +16,16 @@ public class CharacterControllerTest : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     public TimeManager timeManager;
 
+    private CollisionFlags CollisionHit;
+    private CharacterController fpsController;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        fpsController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -33,41 +38,55 @@ public class CharacterControllerTest : MonoBehaviour
         body.transform.eulerAngles = new Vector2(0, rotation.y * lookSpeed);
         fpsCam.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
 
-        //Movement
-        CharacterController fpsController = GetComponent<CharacterController>();
-        if (fpsController.isGrounded)
-        {
-            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            movement = transform.TransformDirection(movement);
-            movement *= moveSpeed;
-            if (Input.GetButton("Jump"))
-            {
-                movement.y = jumpSpeed;
-            }
-            
-        }
-        movement.y -= gravity * Time.deltaTime;
-        fpsController.Move(movement * Time.deltaTime);
+        
         //Time Fiddler
-        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
-        //{
-        //    timeManager.SlowTime();
-        //    moveSpeed = 300.0f;
-        //}
-        //if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A))
-        //{
-        //    timeManager.ReturnTime();
-        //    moveSpeed = 6.0f;
-        //}
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
         {
             timeManager.SlowTime();
-            moveSpeed = 300.0f;
+            //moveSpeed = 120.0f;
         }
         else
         {
             timeManager.ReturnTime();
-            moveSpeed = 6.0f;
+            //moveSpeed = 6.0f;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //Movement
+        
+        if (fpsController.isGrounded)
+        {
+            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
+            movement = transform.TransformDirection(movement);
+            //movement *= moveSpeed;
+            if (Input.GetButtonDown("Jump"))
+            {
+                movement.y = jumpSpeed;
+            }
+
+        }
+        movement.Normalize();
+        movement.y -= gravity * Time.deltaTime;
+        fpsController.Move(movement * Time.unscaledDeltaTime * moveSpeed);
+
+        CollisionHit = fpsController.Move(movement * Time.fixedUnscaledDeltaTime);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        //dont move the rigidbody if the character is on top of it
+        if (CollisionHit == CollisionFlags.Below)
+        {
+            return;
+        }
+
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+        body.AddForceAtPosition(fpsController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
