@@ -24,11 +24,11 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        if (isPaused)
+        if (isPaused == true)
         {
             pauseMenu.SetActive(isPaused);
             Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
