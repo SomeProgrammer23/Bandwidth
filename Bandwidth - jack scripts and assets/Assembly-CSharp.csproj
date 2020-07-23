@@ -72,9 +72,14 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\Scripts\BulletImpact.cs" />
     <Compile Include="Assets\Scripts\CharacterControllerTest.cs" />
+    <Compile Include="Assets\Scripts\EnemyTemp.cs" />
     <Compile Include="Assets\Scripts\FirstPersonControllerCopy.cs" />
+    <Compile Include="Assets\Scripts\HandGun.cs" />
+    <Compile Include="Assets\Scripts\InstigatedPickups.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
+    <Compile Include="Assets\Scripts\Pickup.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.Timeline.Editor">

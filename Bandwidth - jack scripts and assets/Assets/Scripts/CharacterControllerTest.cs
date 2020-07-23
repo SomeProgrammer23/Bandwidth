@@ -16,11 +16,16 @@ public class CharacterControllerTest : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     public TimeManager timeManager;
 
+    private CollisionFlags CollisionHit;
+    private CharacterController fpsController;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        fpsController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -45,25 +50,52 @@ public class CharacterControllerTest : MonoBehaviour
             timeManager.ReturnTime();
             //moveSpeed = 6.0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed / 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = moveSpeed * 2;
+        }
     }
 
     private void FixedUpdate()
     {
         //Movement
-        CharacterController fpsController = GetComponent<CharacterController>();
+        
         if (fpsController.isGrounded)
         {
             movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
             movement = transform.TransformDirection(movement);
             //movement *= moveSpeed;
-            if (Input.GetButtonDown("Jump"))
-            {
-                movement.y = jumpSpeed;
-            }
+            //if (Input.GetButtonDown("Jump"))
+            //{
+            //    movement.y = jumpSpeed;
+            //}
 
         }
         movement.Normalize();
         movement.y -= gravity * Time.deltaTime;
         fpsController.Move(movement * Time.unscaledDeltaTime * moveSpeed);
+
+        CollisionHit = fpsController.Move(movement * Time.fixedUnscaledDeltaTime);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        //dont move the rigidbody if the character is on top of it
+        if (CollisionHit == CollisionFlags.Below)
+        {
+            return;
+        }
+
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+        body.AddForceAtPosition(fpsController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
