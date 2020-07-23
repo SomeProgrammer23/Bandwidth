@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class BulletImpact : MonoBehaviour
 {
     private Transform parent;
-    
+    private OnHoverBorder OnHoverBorder;
+
 
     void Start()
     {
@@ -36,8 +37,10 @@ public class BulletImpact : MonoBehaviour
 
         if (collision.collider.name == "FPSController")
         {
+            OnHoverBorder.singlePickup = true;
             Scene scean = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scean.name);
+
         }
     }
 

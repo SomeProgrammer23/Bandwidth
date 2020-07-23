@@ -10,7 +10,7 @@ public class HandGun : MonoBehaviour
     public GameObject muzzleFlashPrefab;
     public Transform barrelLocation;
     public Transform casingExitLocation;
-    public Transform parent;
+    private Transform parent;
     public int rounds = 8;
 
 
@@ -18,6 +18,7 @@ public class HandGun : MonoBehaviour
 
     void Start()
     {
+        parent = GameObject.Find("PlayerHand").transform;
         if (barrelLocation == null)
             barrelLocation = transform;
     }

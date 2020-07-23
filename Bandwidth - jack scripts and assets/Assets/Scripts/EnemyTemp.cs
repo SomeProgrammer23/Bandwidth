@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class EnemyTemp : MonoBehaviour
 {
@@ -27,14 +29,25 @@ public class EnemyTemp : MonoBehaviour
             gun.transform.LookAt(target);
             gun.GetComponent<Rigidbody>().velocity = holdPos;
             gun.GetComponent<Rigidbody>().angularVelocity = holdPos;
+            this.GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<Rigidbody>().velocity = holdPos;
+            this.GetComponent<Rigidbody>().angularVelocity = holdPos;
+            this.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {
             gun.GetComponent<Rigidbody>().useGravity = true;
             gun.GetComponent<Rigidbody>().isKinematic = false;
             gun.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.GetComponent<Rigidbody>().useGravity = true;
+            this.GetComponent<Rigidbody>().isKinematic = false;
             gun.transform.parent = null;
+            this.transform.parent = null;
+            Destroy(this.GetComponent<TempAIController>());
+            Destroy(this.GetComponent<NavMeshAgent>());
             Destroy(this);
+            
         }
     }
 
@@ -43,24 +56,22 @@ public class EnemyTemp : MonoBehaviour
         if (other.name == "FPSController" && alive == true)
         {
             gun.GetComponent<Animator>().SetTrigger("Fire");
+            this.GetComponent<NavMeshAgent>().enabled = false;
+        }
+        else
+        {
+            this.GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider == gun)
+        if(collision.collider.tag == "Projectile")
         {
-            Physics.IgnoreCollision(gun.GetComponent<Collider>(), GetComponent<Collider>());
-            return;
-        }
-        else if (collision.collider.name == "FPSController")
-        {
-            Physics.IgnoreCollision(GameObject.Find("FPSController").GetComponent<Collider>(), GetComponent<Collider>());
-            return;
-        }
-        else
-        {
-            alive = false;
+            if(collision.relativeVelocity.magnitude > 2)
+            {
+                alive = false;
+            }
         }
     }
 }

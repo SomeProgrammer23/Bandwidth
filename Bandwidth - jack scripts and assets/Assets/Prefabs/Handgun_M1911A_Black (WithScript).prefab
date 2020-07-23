@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9004085721744058767}
   m_Layer: 0
   m_Name: Handgun_M1911A_Black (WithScript)
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   throwForce: 20
   held: 0
   objectPoint: {fileID: 9006013182267682002}
+  range: 3
 --- !u!114 &9004085721744058767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +164,6 @@ MonoBehaviour:
     type: 3}
   barrelLocation: {fileID: 9006013182267682002}
   casingExitLocation: {fileID: 8999746933156903102}
-  parent: {fileID: 0}
   rounds: 6
   shotPower: 50
 --- !u!1 &9003018159632659584

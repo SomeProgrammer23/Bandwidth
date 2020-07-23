@@ -16,7 +16,6 @@ public class OnHoverBorder : MonoBehaviour
     static public bool singlePickup = true;
     public float range = 3f;
 
-    private InstigatedPickups InstigatedPickups;
 
     //void OnMouseOver()
     //{
@@ -62,29 +61,31 @@ public class OnHoverBorder : MonoBehaviour
         }
 
 
-        if (pickup == true)
+        if (this.transform.IsChildOf(GameObject.Find("EGO - Enemies").transform) == false)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) && singlePickup == true)
+            if (pickup == true)
             {
-                GetComponent<Collider>().enabled = false;
-                GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<Rigidbody>().velocity = holdPos;
-                GetComponent<Rigidbody>().angularVelocity = holdPos;
-                held = true;
-                //this.transform.position = hand.transform.position;
-                this.transform.position = GameObject.Find("PlayerHand").transform.position;
-                //objectPoint.transform.LookAt(looker);
+                if (Input.GetKeyDown(KeyCode.Mouse1) && singlePickup == true)
+                {
+                    GetComponent<Collider>().enabled = false;
+                    GetComponent<Rigidbody>().useGravity = false;
+                    GetComponent<Rigidbody>().velocity = holdPos;
+                    GetComponent<Rigidbody>().angularVelocity = holdPos;
+                    held = true;
+                    //this.transform.position = hand.transform.position;
+                    this.transform.position = GameObject.Find("PlayerHand").transform.position;
+                    //objectPoint.transform.LookAt(looker);
 
-                this.transform.parent = GameObject.Find("PlayerHand").transform;
+                    this.transform.parent = GameObject.Find("PlayerHand").transform;
 
-                Invoke("PickupCheck", 0.001f);
-                //singlePickup = false;
-                InstigatedPickups.singlePickup = false;
+                    Invoke("PickupCheck", 0.001f);
+                    //singlePickup = false;
+                }
             }
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit, 10000))
+        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit))
         {
             looker.transform.position = hit.point;
             if (held == true)
@@ -108,7 +109,6 @@ public class OnHoverBorder : MonoBehaviour
                 held = false;
                 //singlePickup = true;
                 Invoke("PickupCheckAgain", 0.001f);
-                InstigatedPickups.singlePickup = true;
             }
         }
     }
