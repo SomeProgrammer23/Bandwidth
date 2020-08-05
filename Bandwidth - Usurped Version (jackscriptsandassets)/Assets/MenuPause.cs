@@ -7,10 +7,13 @@ public class MenuPause : MonoBehaviour
 {
     public GameObject pauseCanvas;
     public bool isPaused;
+    CharacterControllerTest charContAccess;
     // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
+        pauseCanvas.SetActive(false);
+        charContAccess = GetComponent<CharacterControllerTest>();
     }
 
     // Update is called once per frame
@@ -19,41 +22,49 @@ public class MenuPause : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Go Go P Key");
-            PauseState();
+            if (isPaused == false)
+            {
+                Debug.Log("Pause Please");
+                PauseGame();
+            }
+            else if (isPaused == true)
+            {
+                Debug.Log("UnPause Please");
+                ResumeGame();
+            }
+            
         }
         
     }
 
-    //PauseState uses "P" key to toggle Game Pause
-    public void PauseState()
+    
+
+    //PauseState uses "P" key to Pause game
+    public void PauseGame()
     {
-        Debug.Log("PauseState was ");
-        if (isPaused == false)
-        {
-            pauseCanvas.SetActive(true);
-            Time.timeScale = 0;
-            isPaused = true;
-        }
-        if (isPaused == true)
-        {
-            pauseCanvas.SetActive(false);
-            Time.timeScale = 1;
-            isPaused = false;
-        }
+        isPaused = true;
+        charContAccess.CameraDiddle();
+        pauseCanvas.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Debug.Log("PauseGame Was called");
     }
 
-    //ResumeGame uses the in-menu button to un-pause
+    //ResumeGame uses the "P key" or in-menu button to un-pause
     public void ResumeGame()
     {
+        isPaused = false;
+        charContAccess.CameraDiddle();
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
-        isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("ResumeGame Was called");
     }
 
     //Jibbity commits one random sinful act that cannot be spoken of on these holy grounds
     public void Jibbity()
     {
-        
+        Debug.Log("YOU ARE A SINNER");
     }
 
     //QuitGame does quit the game (presumably)

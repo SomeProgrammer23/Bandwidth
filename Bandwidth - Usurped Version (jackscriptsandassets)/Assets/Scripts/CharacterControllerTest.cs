@@ -13,12 +13,12 @@ public class CharacterControllerTest : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     private Vector3 movement = Vector3.zero;
-    private Vector2 rotation = Vector2.zero;
+    public Vector2 rotation = Vector2.zero;
     public TimeManager timeManager;
 
     private CollisionFlags CollisionHit;
     private CharacterController fpsController;
-
+    public bool cameraLock = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,15 @@ public class CharacterControllerTest : MonoBehaviour
         //Camera look 
         rotation.y += Input.GetAxis("Mouse X");
         rotation.x += -Input.GetAxis("Mouse Y");
-        rotation.x = Mathf.Clamp(rotation.x, -20f, 20f);
+        
+        if (cameraLock == false)
+        {
+            rotation.x = Mathf.Clamp(rotation.x, -20f, 20f);
+        }
+        else
+        {
+            rotation.x = Mathf.Clamp(rotation.x, 0f, 0f);
+        }
         body.transform.eulerAngles = new Vector2(0, rotation.y * lookSpeed);
         fpsCam.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
 
@@ -97,5 +105,10 @@ public class CharacterControllerTest : MonoBehaviour
             return;
         }
         body.AddForceAtPosition(fpsController.velocity * 0.1f, hit.point, ForceMode.Impulse);
+    }
+
+    public void CameraDiddle()
+    {
+        cameraLock = !cameraLock;
     }
 }
