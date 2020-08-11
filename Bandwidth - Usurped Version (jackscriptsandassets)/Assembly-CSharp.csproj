@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\MenuMethods.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
+    <Compile Include="Assets\Scripts\ShotGun.cs" />
     <Compile Include="Assets\Scripts\TempAIController.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\Shaders\Blur.shader" />

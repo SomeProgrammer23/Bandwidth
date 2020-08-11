@@ -13,18 +13,18 @@ public class CharacterControllerTest : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     private Vector3 movement = Vector3.zero;
-    public Vector2 rotation = Vector2.zero;
+    private Vector2 rotation = Vector2.zero;
     public TimeManager timeManager;
+    private MenuPause menuPauseRef;
 
     private CollisionFlags CollisionHit;
     private CharacterController fpsController;
-    public bool cameraLock = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-
+        menuPauseRef = GameObject.Find("PauseMenu").GetComponent<MenuPause>();
         fpsController = GetComponent<CharacterController>();
     }
 
@@ -32,30 +32,37 @@ public class CharacterControllerTest : MonoBehaviour
     void Update()
     {
         //Camera look 
-        rotation.y += Input.GetAxis("Mouse X");
-        rotation.x += -Input.GetAxis("Mouse Y");
+
+
+        if (menuPauseRef.isPaused == false)
+        {
+            rotation.y += Input.GetAxis("Mouse X");
+            rotation.x += -Input.GetAxis("Mouse Y");
+        }
+
         
-        if (cameraLock == false)
-        {
-            rotation.x = Mathf.Clamp(rotation.x, -20f, 20f);
-        }
-        else
-        {
-            rotation.x = Mathf.Clamp(rotation.x, 0f, 0f);
-        }
+        rotation.x = Mathf.Clamp(rotation.x, -20f, 20f);
         body.transform.eulerAngles = new Vector2(0, rotation.y * lookSpeed);
         fpsCam.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
 
-        
         //Time Fiddler
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
         {
-            timeManager.SlowTime();
+            if (menuPauseRef.isPaused == false)
+            {
+                timeManager.SlowTime();
+            }
+            
             //moveSpeed = 120.0f;
         }
         else
         {
-            timeManager.ReturnTime();
+            if (menuPauseRef.isPaused == false)
+            {
+                timeManager.ReturnTime();
+            }
+
+            
             //moveSpeed = 6.0f;
         }
 
@@ -107,8 +114,5 @@ public class CharacterControllerTest : MonoBehaviour
         body.AddForceAtPosition(fpsController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 
-    public void CameraDiddle()
-    {
-        cameraLock = !cameraLock;
-    }
+    
 }
