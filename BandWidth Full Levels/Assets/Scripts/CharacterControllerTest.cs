@@ -14,7 +14,7 @@ public class CharacterControllerTest : MonoBehaviour
     public float gravity = 20.0f;
     private Vector3 movement = Vector3.zero;
     private Vector2 rotation = Vector2.zero;
-    public TimeManager timeManager;
+    public TimeManager_01 timeManager;
 
     private CollisionFlags CollisionHit;
     private CharacterController fpsController;
@@ -40,17 +40,7 @@ public class CharacterControllerTest : MonoBehaviour
         fpsCam.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
 
         
-        //Time Fiddler
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
-        {
-            timeManager.SlowTime();
-            //moveSpeed = 120.0f;
-        }
-        else
-        {
-            timeManager.ReturnTime();
-            //moveSpeed = 6.0f;
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -64,8 +54,20 @@ public class CharacterControllerTest : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Time Fiddler
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
+        {
+            timeManager.SlowTime();
+            //moveSpeed = 120.0f;
+        }
+        else
+        {
+            timeManager.ReturnTime();
+            //moveSpeed = 6.0f;
+        }
+
         //Movement
-        
+
         if (fpsController.isGrounded)
         {
             movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
