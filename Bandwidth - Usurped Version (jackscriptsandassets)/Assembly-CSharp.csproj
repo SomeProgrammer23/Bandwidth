@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\FirstPersonControllerCopy.cs" />
     <Compile Include="Assets\Scripts\HandGun.cs" />
     <Compile Include="Assets\Scripts\InstigatedPickups.cs" />
+    <Compile Include="Assets\Scripts\MachineGun.cs" />
     <Compile Include="Assets\Scripts\MenuMethods.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
