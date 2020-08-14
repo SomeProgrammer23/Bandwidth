@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class EnemyTemp : MonoBehaviour
 {
     public GameObject gun;
+    public Transform barrel;
     private bool alive = true;
     private Transform target;
     //private HandGun HandGun;
@@ -49,18 +50,27 @@ public class EnemyTemp : MonoBehaviour
             Destroy(this);
             
         }
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "FPSController" && alive == true)
+        RaycastHit detectHit;
+        if (Physics.Raycast(barrel.position, barrel.forward, out detectHit))
         {
-            gun.GetComponent<Animator>().SetTrigger("Fire");
-            this.GetComponent<NavMeshAgent>().enabled = false;
-        }
-        else
-        {
-            this.GetComponent<NavMeshAgent>().enabled = true;
+            if (detectHit.collider == GameObject.Find("HitBox").GetComponent<Collider>())
+            {
+                Debug.Log("hit");
+                if (other.name == "FPSController" && alive == true)
+                {
+                    gun.GetComponent<Animator>().SetTrigger("Fire");
+                    this.GetComponent<NavMeshAgent>().enabled = false;
+                }
+                else
+                {
+                    this.GetComponent<NavMeshAgent>().enabled = true;
+                }
+            }
         }
     }
 

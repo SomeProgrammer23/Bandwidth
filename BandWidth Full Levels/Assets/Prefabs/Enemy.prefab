@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1066151937098295857}
+  barrel: {fileID: 1062853455786753073}
 --- !u!195 &26678699110941930
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -284,6 +285,12 @@ GameObject:
 --- !u!4 &1063243614200938631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9005700331788406884, guid: 9a05fbec179ea834481fb7b53c43e1b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8231395754824683747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1062853455786753073 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9006013182267682002, guid: 9a05fbec179ea834481fb7b53c43e1b9,
     type: 3}
   m_PrefabInstance: {fileID: 8231395754824683747}
   m_PrefabAsset: {fileID: 0}
