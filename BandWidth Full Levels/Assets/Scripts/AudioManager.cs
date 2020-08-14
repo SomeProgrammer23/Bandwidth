@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
 
     public Sound[] sounds;
     public static AudioManager instance;
+    private Slider backgroundMusic;
+    private Slider SFXSlider;
+    private bool soundSet = true;
+
+    public MenuPause pauseMenu;
 
     void Awake()
     {
@@ -40,7 +46,40 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("BackGround");
+        //backgroundMusic = GameObject.Find("MusicSlider").GetComponent<Slider>();
+        //SFXSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
+        Play("MainMenu");
+    }
+
+    void Update()
+    {
+        if (GameObject.Find("PauseJibbityPanel") == true)
+        {
+            backgroundMusic = GameObject.Find("MusicSlider").GetComponent<Slider>();
+            SFXSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
+            if (soundSet == true)
+            {
+                backgroundMusic.value = 30;
+                SFXSlider.value = 30;
+                soundSet = false;
+            }
+
+            foreach (Sound s in sounds)
+            {
+                if (s.background == true)
+                {
+                    s.source.volume = backgroundMusic.value / 100;
+                }
+                else
+                {
+                    s.source.volume = SFXSlider.value / 100;
+                }
+
+            }
+        }
+        
+        
+
     }
 
     //public method to be called to play sounds using their names

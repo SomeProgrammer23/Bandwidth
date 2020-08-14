@@ -8,6 +8,8 @@ public class MenuMethods : MonoBehaviour
     
     public void GameStart()
     {
+        FindObjectOfType<AudioManager>().Pause("MainMenu");
+        FindObjectOfType<AudioManager>().Play("Level1");
         SceneManager.LoadScene(1);
     }
 

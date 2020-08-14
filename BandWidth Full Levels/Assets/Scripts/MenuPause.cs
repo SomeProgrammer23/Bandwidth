@@ -25,7 +25,7 @@ public class MenuPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Go Go P Key");
             if (isPaused == false)
@@ -91,6 +91,8 @@ public class MenuPause : MonoBehaviour
     public void QuitToMenu()
     {
         Debug.Log("You have purchased Later");
+        FindObjectOfType<AudioManager>().Play("MainMenu");
+        FindObjectOfType<AudioManager>().Pause("Level1");
         SceneManager.LoadScene(0);
     }
 
@@ -109,5 +111,6 @@ public class MenuPause : MonoBehaviour
         pausePanel.SetActive(true);
         jibbityPanel.SetActive(false);
         quitPanel.SetActive(false);
+
     }
 }
