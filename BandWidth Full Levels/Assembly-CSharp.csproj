@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\TempAIController.cs" />
     <Compile Include="Assets\Scripts\TimeManager_01.cs" />
+    <Compile Include="Assets\Scripts\TutorialSwitcher.cs" />
     <None Include="Assets\Shaders\OutlineBlur.shader" />
     <None Include="Assets\Shaders\ApplyTexture.shader" />
     <None Include="Assets\Shaders\Blur.shader" />

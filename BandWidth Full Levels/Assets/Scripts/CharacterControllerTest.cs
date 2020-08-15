@@ -16,6 +16,7 @@ public class CharacterControllerTest : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     public TimeManager_01 timeManager;
     private MenuPause menuPauseRef;
+    public bool firstPickup;
 
     private CollisionFlags CollisionHit;
     private CharacterController fpsController;
@@ -27,6 +28,7 @@ public class CharacterControllerTest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuPauseRef = GameObject.Find("PauseMenu").GetComponent<MenuPause>();
         fpsController = GetComponent<CharacterController>();
+        firstPickup = false;
     }
 
     // Update is called once per frame
@@ -82,8 +84,14 @@ public class CharacterControllerTest : MonoBehaviour
 
         if (fpsController.isGrounded)
         {
-            movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
-            movement = transform.TransformDirection(movement);
+            if (firstPickup)
+            {
+                movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
+                movement = transform.TransformDirection(movement);
+            }
+            
+            //movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
+            //movement = transform.TransformDirection(movement);
             //movement *= moveSpeed;
             //if (Input.GetButtonDown("Jump"))
             //{

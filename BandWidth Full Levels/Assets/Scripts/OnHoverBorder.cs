@@ -14,8 +14,10 @@ public class OnHoverBorder : MonoBehaviour
     private Transform looker;
     public Transform objectPoint;
     static public bool singlePickup = true;
-    public bool first
+    
     public float range = 3f;
+
+    CharacterControllerTest controllerTest;
 
 
     //void OnMouseOver()
@@ -33,8 +35,10 @@ public class OnHoverBorder : MonoBehaviour
 
     private void Start()
     {
+        controllerTest = GameObject.Find("FPSController").GetComponent<CharacterControllerTest>();
         camPos = GameObject.Find("FirstPersonCharacter").transform;
         looker = GameObject.Find("Looker").transform;
+        
     }
 
     void Update()
@@ -78,7 +82,7 @@ public class OnHoverBorder : MonoBehaviour
                     //objectPoint.transform.LookAt(looker);
 
                     this.transform.parent = GameObject.Find("PlayerHand").transform;
-
+                    controllerTest.firstPickup = true;
                     Invoke("PickupCheck", 0.001f);
                     //singlePickup = false;
                 }

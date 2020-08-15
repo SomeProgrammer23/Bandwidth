@@ -7,7 +7,7 @@ public class MenuPause : MonoBehaviour
 {
     public GameObject godPanel;
     public GameObject pausePanel;
-    public GameObject jibbityPanel;
+    public GameObject optionPanel;
     public GameObject quitPanel;
     public bool isPaused;
     
@@ -17,7 +17,7 @@ public class MenuPause : MonoBehaviour
         isPaused = false;
         godPanel.SetActive(false);
         pausePanel.SetActive(true);
-        jibbityPanel.SetActive(false);
+        optionPanel.SetActive(false);
         quitPanel.SetActive(false);
         //charContAccess = GetComponent<CharacterControllerTest>();
     }
@@ -52,7 +52,7 @@ public class MenuPause : MonoBehaviour
         isPaused = true;
         godPanel.SetActive(true);
         pausePanel.SetActive(true);
-        jibbityPanel.SetActive(false);
+        optionPanel.SetActive(false);
         quitPanel.SetActive(false);
         Time.timeScale = 0;
         Time.fixedDeltaTime = 0;
@@ -72,12 +72,12 @@ public class MenuPause : MonoBehaviour
         Debug.Log("ResumeGame Was called END");
     }
 
-    //Jibbity commits one random sinful act that cannot be spoken of on these holy grounds
-    public void Jibbity()
+    //Option commits one random sinful act that cannot be spoken of on these holy grounds
+    public void Option()
     {
         Debug.Log("YOU ARE A SINNER");
         pausePanel.SetActive(false);
-        jibbityPanel.SetActive(true);
+        optionPanel.SetActive(true);
     }
 
     //QuitGame does quit the game (presumably)
@@ -109,7 +109,7 @@ public class MenuPause : MonoBehaviour
     {
         Debug.Log("Le Repause");
         pausePanel.SetActive(true);
-        jibbityPanel.SetActive(false);
+        optionPanel.SetActive(false);
         quitPanel.SetActive(false);
 
     }
