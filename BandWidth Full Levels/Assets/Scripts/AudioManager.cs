@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.Find("PauseJibbityPanel") == true)
+        if (GameObject.Find("OptionsPanel") == true)
         {
             backgroundMusic = GameObject.Find("MusicSlider").GetComponent<Slider>();
             SFXSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
