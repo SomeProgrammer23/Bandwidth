@@ -14,6 +14,7 @@ public class OnHoverBorder : MonoBehaviour
     private Transform looker;
     public Transform objectPoint;
     static public bool singlePickup = true;
+    public bool first
     public float range = 3f;
 
 
