@@ -46,12 +46,12 @@ public class ShotGun : MonoBehaviour
 
         GameObject tempFlash;
         //Centre Bullet
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
+        //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
         //Cardinal Bullets
-        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(0, 30, 0))).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
-        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(0, -30, 0))).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
-        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(30, 0, 0))).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
-        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(-30, 0, 0))).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
+        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(0, 30, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward + (barrelLocation.right / 15)) * shotPower, ForceMode.Impulse);
+        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(0, -30, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward - (barrelLocation.right / 15)) * shotPower, ForceMode.Impulse);
+        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(30, 0, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward - (barrelLocation.up / 15)) * shotPower, ForceMode.Impulse);
+        Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(-30, 0, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward + (barrelLocation.up / 15)) * shotPower, ForceMode.Impulse);
         tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
 
         Destroy(GameObject.Find("MuzzleFlash(Clone)"), 0.5f);
