@@ -90,6 +90,7 @@ public class OnHoverBorder : MonoBehaviour
                     }
                 }
             }
+            this.tag = "Projectile";
         }
 
         RaycastHit hit;

@@ -134,6 +134,7 @@ MonoBehaviour:
   held: 0
   objectPoint: {fileID: 8231395754801137165}
   range: 3
+  shotGun: 0
 --- !u!114 &8852209714035483591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Handgun_M1911A_Black (WithScript) (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002820288566360786, guid: 9a05fbec179ea834481fb7b53c43e1b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 9004085721744058754, guid: 9a05fbec179ea834481fb7b53c43e1b9,
         type: 3}
