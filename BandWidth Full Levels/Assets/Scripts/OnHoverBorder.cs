@@ -14,11 +14,8 @@ public class OnHoverBorder : MonoBehaviour
     private Transform looker;
     public Transform objectPoint;
     static public bool singlePickup = true;
-    
     public float range = 3f;
-
-    CharacterControllerTest controllerTest;
-
+    public bool shotGun;
 
     //void OnMouseOver()
     //{
@@ -35,10 +32,8 @@ public class OnHoverBorder : MonoBehaviour
 
     private void Start()
     {
-        controllerTest = GameObject.Find("FPSController").GetComponent<CharacterControllerTest>();
         camPos = GameObject.Find("FirstPersonCharacter").transform;
         looker = GameObject.Find("Looker").transform;
-        
     }
 
     void Update()
@@ -77,14 +72,19 @@ public class OnHoverBorder : MonoBehaviour
                     GetComponent<Rigidbody>().velocity = holdPos;
                     GetComponent<Rigidbody>().angularVelocity = holdPos;
                     held = true;
-                    //this.transform.position = hand.transform.position;
-                    this.transform.position = GameObject.Find("PlayerHand").transform.position;
-                    //objectPoint.transform.LookAt(looker);
 
                     this.transform.parent = GameObject.Find("PlayerHand").transform;
-                    controllerTest.firstPickup = true;
+
                     Invoke("PickupCheck", 0.001f);
                     //singlePickup = false;
+                    if(shotGun == true)
+                    {
+                        this.transform.position = GameObject.Find("PlayerHand").transform.position + new Vector3(0, 0.5f, 0);
+                    }
+                    else
+                    {
+                        this.transform.position = GameObject.Find("PlayerHand").transform.position;
+                    }
                 }
             }
         }
@@ -96,7 +96,7 @@ public class OnHoverBorder : MonoBehaviour
             if (held == true)
             {
                 objectPoint.transform.LookAt(looker);
-                this.transform.LookAt(looker);
+                this.transform.LookAt(looker/*, new Vector3 (0,0,0)*/);
             }
         }
 

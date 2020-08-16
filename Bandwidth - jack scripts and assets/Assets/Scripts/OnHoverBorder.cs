@@ -15,7 +15,7 @@ public class OnHoverBorder : MonoBehaviour
     public Transform objectPoint;
     static public bool singlePickup = true;
     public float range = 3f;
-
+    public bool shotGun;
 
     //void OnMouseOver()
     //{
@@ -72,14 +72,19 @@ public class OnHoverBorder : MonoBehaviour
                     GetComponent<Rigidbody>().velocity = holdPos;
                     GetComponent<Rigidbody>().angularVelocity = holdPos;
                     held = true;
-                    //this.transform.position = hand.transform.position;
-                    this.transform.position = GameObject.Find("PlayerHand").transform.position;
-                    //objectPoint.transform.LookAt(looker);
 
                     this.transform.parent = GameObject.Find("PlayerHand").transform;
 
                     Invoke("PickupCheck", 0.001f);
                     //singlePickup = false;
+                    if(shotGun == true)
+                    {
+                        this.transform.position = GameObject.Find("PlayerHand").transform.position + new Vector3(0, 0.5f, 0);
+                    }
+                    else
+                    {
+                        this.transform.position = GameObject.Find("PlayerHand").transform.position;
+                    }
                 }
             }
         }
@@ -91,7 +96,7 @@ public class OnHoverBorder : MonoBehaviour
             if (held == true)
             {
                 objectPoint.transform.LookAt(looker);
-                this.transform.LookAt(looker);
+                this.transform.LookAt(looker/*, new Vector3 (0,0,0)*/);
             }
         }
 
