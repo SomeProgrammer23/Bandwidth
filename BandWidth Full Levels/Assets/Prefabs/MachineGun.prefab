@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025400469807453038}
-  m_LocalRotation: {x: -0, y: -0.9999912, z: -0, w: 0.0041982895}
+  m_LocalRotation: {x: 0, y: -0.9999912, z: 0, w: 0.004197462}
   m_LocalPosition: {x: 9.113, y: 1.641, z: -18.067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -201,7 +201,7 @@ Animator:
   m_GameObject: {fileID: 4025400470420842182}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d63b84f580d7654c942b876a873080f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 727963ff649ba7649b812576964d7dcf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -210,7 +210,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4025400469192243312
+--- !u!114 &1871670281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4025400470420842182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8cca24bae7f5e47bb0f8837156e83c, type: 3}
+  m_Script: {fileID: 11500000, guid: ae65ec45edb1c5a40ab7a67ac5519894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1900734910723676, guid: 98f7eaa7d90251c44ad796e19ecc0e08,
@@ -230,8 +230,8 @@ MonoBehaviour:
     type: 3}
   barrelLocation: {fileID: 4025400469015489542}
   casingExitLocation: {fileID: 4025400470420355812}
-  rounds: 6
-  shotPower: 50
+  rounds: 8
+  shotPower: 100
 --- !u!1001 &4025400470420742246
 PrefabInstance:
   m_ObjectHideFlags: 0

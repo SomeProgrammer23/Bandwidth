@@ -16,6 +16,7 @@ public class OnHoverBorder : MonoBehaviour
     static public bool singlePickup = true;
     public float range = 3f;
     public bool shotGun;
+    CharacterControllerTest firstPickup;
 
     //void OnMouseOver()
     //{
@@ -34,6 +35,7 @@ public class OnHoverBorder : MonoBehaviour
     {
         camPos = GameObject.Find("FirstPersonCharacter").transform;
         looker = GameObject.Find("Looker").transform;
+        firstPickup = GameObject.Find("FPSController").GetComponent<CharacterControllerTest>();
     }
 
     void Update()
@@ -77,6 +79,7 @@ public class OnHoverBorder : MonoBehaviour
 
                     Invoke("PickupCheck", 0.001f);
                     //singlePickup = false;
+                    firstPickup.firstPickup = true;
                     if(shotGun == true)
                     {
                         this.transform.position = GameObject.Find("PlayerHand").transform.position + new Vector3(0, 0.5f, 0);

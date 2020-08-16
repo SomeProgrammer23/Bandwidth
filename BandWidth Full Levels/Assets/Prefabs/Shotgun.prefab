@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7227732056115856120}
   - component: {fileID: 7227732056115856121}
   - component: {fileID: 7227732056115856126}
-  - component: {fileID: 7227732056115856066}
+  - component: {fileID: 1565595333}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -315,7 +315,7 @@ Animator:
   m_GameObject: {fileID: 7227732056550866620}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d63b84f580d7654c942b876a873080f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 505c499bfa4561c4cb060f690429cb6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   objectPoint: {fileID: 7227732055700689229}
   range: 3
   shotGun: 1
---- !u!114 &7227732056115856066
+--- !u!114 &1565595333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7227732056550866620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8cca24bae7f5e47bb0f8837156e83c, type: 3}
+  m_Script: {fileID: 11500000, guid: 94e54478a0c250443a069c666219165d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1900734910723676, guid: 98f7eaa7d90251c44ad796e19ecc0e08,
@@ -363,5 +363,5 @@ MonoBehaviour:
     type: 3}
   barrelLocation: {fileID: 7227732055700689229}
   casingExitLocation: {fileID: 7227732056550942932}
-  rounds: 6
-  shotPower: 50
+  rounds: 2
+  shotPower: 100
