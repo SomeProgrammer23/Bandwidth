@@ -55,6 +55,9 @@ public class CharacterControllerTest : MonoBehaviour
         {
             moveSpeed = moveSpeed * 2;
         }
+
+        
+        
     }
 
     private void FixedUpdate()
