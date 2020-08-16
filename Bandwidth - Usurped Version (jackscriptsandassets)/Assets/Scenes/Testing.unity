@@ -3001,6 +3001,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.2390001
       objectReference: {fileID: 0}
+    - target: {fileID: 9053658243776234294, guid: 9a05fbec179ea834481fb7b53c43e1b9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 505c499bfa4561c4cb060f690429cb6a, type: 2}
     m_RemovedComponents:
     - {fileID: 9004085721744058767, guid: 9a05fbec179ea834481fb7b53c43e1b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a05fbec179ea834481fb7b53c43e1b9, type: 3}
@@ -3030,7 +3035,7 @@ MonoBehaviour:
     type: 3}
   barrelLocation: {fileID: 765276308}
   casingExitLocation: {fileID: 1220944867}
-  rounds: 8
+  rounds: 2
   shotPower: 100
 --- !u!1001 &1833987536
 PrefabInstance:
