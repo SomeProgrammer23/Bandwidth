@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\TempAIController.cs" />
     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
+    <None Include="Assets\Outline.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/User/Documents/GitHub/Bandwidth/Bandwidth - jack scripts and assets/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

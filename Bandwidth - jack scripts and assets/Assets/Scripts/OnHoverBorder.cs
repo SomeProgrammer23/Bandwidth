@@ -45,11 +45,13 @@ public class OnHoverBorder : MonoBehaviour
             if (detect.collider == gameObject.GetComponent<Collider>())
             {
                 GetComponent<Renderer>().material = border;
+                GetComponentInChildren<Renderer>().material = border;
                 pickup = true;
             }
             else if (detect.collider == gameObject.GetComponent<Collider>() == false)
             {
                 GetComponent<Renderer>().material = nonBorder;
+                GetComponentInChildren<Renderer>().material = nonBorder;
                 pickup = false;
             }
             
@@ -57,6 +59,7 @@ public class OnHoverBorder : MonoBehaviour
         else
         {
             GetComponent<Renderer>().material = nonBorder;
+            GetComponentInChildren<Renderer>().material = nonBorder;
             pickup = false;
         }
 
