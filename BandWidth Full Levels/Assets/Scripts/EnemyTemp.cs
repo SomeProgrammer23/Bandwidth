@@ -50,6 +50,8 @@ public class EnemyTemp : MonoBehaviour
             Destroy(this);
             
         }
+
+
         
     }
 
@@ -64,11 +66,6 @@ public class EnemyTemp : MonoBehaviour
                 if (other.name == "FPSController" && alive == true)
                 {
                     gun.GetComponent<Animator>().SetTrigger("Fire");
-                    this.GetComponent<NavMeshAgent>().enabled = false;
-                }
-                else
-                {
-                    this.GetComponent<NavMeshAgent>().enabled = true;
                 }
             }
         }

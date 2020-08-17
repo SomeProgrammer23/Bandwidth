@@ -31,12 +31,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
             if (target != null)
+            {
                 agent.SetDestination(target.position);
-
+            }
             if (agent.remainingDistance > agent.stoppingDistance)
+            {
                 Move(agent.desiredVelocity);
+                this.GetComponent<Animator>().SetTrigger("isWalking");
+                //this.GetComponent<Animation>().Stop("isIdle");
+            }
             else
+            {
                 Move(Vector3.zero);
+                //this.GetComponent<Animation>().Stop("isWalking");
+                //this.GetComponent<Animator>().SetTrigger("isIdle");
+            }
+                
         }
 
 

@@ -200,10 +200,10 @@ GameObject:
   - component: {fileID: 7227732056549702388}
   - component: {fileID: 7227732056548585672}
   - component: {fileID: 7227732056115856123}
-  - component: {fileID: 7227732056115856120}
   - component: {fileID: 7227732056115856121}
   - component: {fileID: 7227732056115856126}
   - component: {fileID: 1565595333}
+  - component: {fileID: 4579468691020115018}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -291,20 +291,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &7227732056115856120
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7227732056550866620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 05a154c8dfc57f64fb698939a1cfc762, type: 3}
 --- !u!95 &7227732056115856121
 Animator:
   serializedVersion: 3
@@ -365,3 +351,16 @@ MonoBehaviour:
   casingExitLocation: {fileID: 7227732056550942932}
   rounds: 2
   shotPower: 100
+--- !u!65 &4579468691020115018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227732056550866620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.032947686, y: 0.1549026, z: 0.99463063}
+  m_Center: {x: 0, y: -0.034642324, z: 0.19502154}

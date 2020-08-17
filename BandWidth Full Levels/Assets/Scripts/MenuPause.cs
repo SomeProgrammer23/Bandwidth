@@ -114,6 +114,8 @@ public class MenuPause : MonoBehaviour
         pausePanel.SetActive(true);
         optionPanel.SetActive(false);
         quitPanel.SetActive(false);
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
 
     }
 }

@@ -8,7 +8,7 @@ public class MenuMethods : MonoBehaviour
     public GameObject mainPanel;
     public GameObject optionsPanel;
     private AudioManager Audio;
-    
+
     //GameStart Loads and plays game scene 
     public void GameStart()
     {
@@ -17,6 +17,8 @@ public class MenuMethods : MonoBehaviour
         SceneManager.LoadScene(1);
         Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
         Audio.sceneChange = true;
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     //GameExit Quits Game
