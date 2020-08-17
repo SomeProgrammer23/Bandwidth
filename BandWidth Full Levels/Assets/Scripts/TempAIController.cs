@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (agent.remainingDistance > agent.stoppingDistance)
             {
                 Move(agent.desiredVelocity);
-                this.GetComponent<Animator>().SetTrigger("isWalking");
+                //this.GetComponent<Animator>().SetTrigger("isWalking");
                 //this.GetComponent<Animation>().Stop("isIdle");
             }
             else
