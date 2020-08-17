@@ -1395,7 +1395,27 @@ MonoBehaviour:
     loop: 1
     background: 1
     source: {fileID: 0}
-  pauseMenu: {fileID: 0}
+  - name: Level2
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: level3
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: level4
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
 --- !u!4 &685906941
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class AudioManager : MonoBehaviour
     private Slider SFXSlider;
     private bool soundSet = true;
 
-    public MenuPause pauseMenu;
+    [HideInInspector]
+    public bool sceneChange = false;
+
+    private MenuPause pauseMenu;
 
     void Awake()
     {
@@ -46,9 +50,27 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //backgroundMusic = GameObject.Find("MusicSlider").GetComponent<Slider>();
-        //SFXSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
-        Play("MainMenu");
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "MainMenu")
+        {
+            Play("MainMenu");
+        }
+        else if (scene.name == "Level 1")
+        {
+            Play("Level1");
+        }
+        else if (scene.name == "Level 2")
+        {
+            Play("Level2");
+        }
+        else if (scene.name == "Level 3")
+        {
+            Play("Level3");
+        }
+        else if (scene.name == "Level 4")
+        {
+            Play("Level4");
+        }
     }
 
     void Update()
@@ -64,22 +86,38 @@ public class AudioManager : MonoBehaviour
                 soundSet = false;
             }
 
+            if (sceneChange == true)
+            {
+                foreach (Sound s in sounds)
+                {
+                    if (s.background == true)
+                    {
+                        backgroundMusic.value = s.source.volume * 100;
+                    }
+                    else
+                    {
+                        SFXSlider.value = s.source.volume * 100;
+                    }
+                }
+                sceneChange = false;
+            }
+
+
             foreach (Sound s in sounds)
             {
-                if (s.background == true)
+                if(sceneChange == false)
                 {
-                    s.source.volume = backgroundMusic.value / 100;
+                    if (s.background == true)
+                    {
+                        s.source.volume = backgroundMusic.value / 100;
+                    }
+                    else
+                    {
+                        s.source.volume = SFXSlider.value / 100;
+                    }
                 }
-                else
-                {
-                    s.source.volume = SFXSlider.value / 100;
-                }
-
             }
         }
-        
-        
-
     }
 
     //public method to be called to play sounds using their names
@@ -106,5 +144,30 @@ public class AudioManager : MonoBehaviour
             return;    
         }
         s.source.Pause(); //pauses the AudioSource
+    }
+
+    //public method to be called to stop sounds using their names
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found");
+            return;
+        }
+        s.source.Stop(); //stops the AudioSource
+    }
+
+    //public method to be called to restart sounds using their names
+    public void Restart(string name)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found");
+            return;
+        }
+        s.source.Stop(); //Stops the AudioSource
+        s.source.Play(); //plays the AudioSource
     }
 }

@@ -7,13 +7,16 @@ public class MenuMethods : MonoBehaviour
 {
     public GameObject mainPanel;
     public GameObject optionsPanel;
+    private AudioManager Audio;
     
     //GameStart Loads and plays game scene 
     public void GameStart()
     {
-        FindObjectOfType<AudioManager>().Pause("MainMenu");
+        FindObjectOfType<AudioManager>().Stop("MainMenu");
         FindObjectOfType<AudioManager>().Play("Level1");
         SceneManager.LoadScene(1);
+        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
+        Audio.sceneChange = true;
     }
 
     //GameExit Quits Game

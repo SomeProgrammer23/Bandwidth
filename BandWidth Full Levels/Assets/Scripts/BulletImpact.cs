@@ -38,8 +38,8 @@ public class BulletImpact : MonoBehaviour
         if (collision.collider.name == "FPSController")
         {
             OnHoverBorder.singlePickup = true;
-            Scene scean = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scean.name);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
 
         }
     }

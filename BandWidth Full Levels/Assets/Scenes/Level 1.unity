@@ -12786,14 +12786,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: BackGround
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: c99e12833326b15418156d198b1ae58a, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: Level1
     clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
     volume: 0.3
     pitch: 1
     loop: 1
     background: 1
     source: {fileID: 0}
-  pauseMenu: {fileID: 0}
+  - name: Level2
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: level3
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: level4
+    clip: {fileID: 8300000, guid: f4cbae93c2ea1ab4f81264f2b5223a4d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 1
+    source: {fileID: 0}
+  - name: HandgunFire
+    clip: {fileID: 8300000, guid: b7a30cef039d51348aba1348649601f6, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    background: 0
+    source: {fileID: 0}
+  sceneChange: 0
 --- !u!4 &1104277554
 Transform:
   m_ObjectHideFlags: 0

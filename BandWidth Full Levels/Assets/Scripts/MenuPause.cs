@@ -10,7 +10,8 @@ public class MenuPause : MonoBehaviour
     public GameObject optionPanel;
     public GameObject quitPanel;
     public bool isPaused;
-    
+    private AudioManager Audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,8 +93,10 @@ public class MenuPause : MonoBehaviour
     {
         Debug.Log("You have purchased Later");
         FindObjectOfType<AudioManager>().Play("MainMenu");
-        FindObjectOfType<AudioManager>().Pause("Level1");
+        FindObjectOfType<AudioManager>().Stop("Level1");
         SceneManager.LoadScene(0);
+        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
+        Audio.sceneChange = true;
     }
 
     //QuitChoose lets you choose the amount of quit you would like to purchase from my store
