@@ -8,17 +8,14 @@ public class MenuMethods : MonoBehaviour
     public GameObject mainPanel;
     public GameObject optionsPanel;
     private AudioManager Audio;
+    SceneLoadIn ScreenFade;
 
     //GameStart Loads and plays game scene 
     public void GameStart()
     {
-        FindObjectOfType<AudioManager>().Stop("MainMenu");
-        FindObjectOfType<AudioManager>().Play("Level1");
-        SceneManager.LoadScene(1);
-        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
-        Audio.sceneChange = true;
-        Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.02f;
+        Invoke("StartGame", 1);
+        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        ScreenFade.FadeOn();
     }
 
     //GameExit Quits Game
@@ -41,4 +38,15 @@ public class MenuMethods : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
+    void StartGame()
+    {
+        Debug.Log("yes");
+        FindObjectOfType<AudioManager>().Stop("MainMenu");
+        FindObjectOfType<AudioManager>().Play("Level1");
+        SceneManager.LoadScene(1);
+        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
+        Audio.sceneChange = true;
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+    }
 }

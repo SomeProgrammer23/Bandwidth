@@ -11,6 +11,8 @@ public class MenuPause : MonoBehaviour
     public GameObject quitPanel;
     public bool isPaused;
     private AudioManager Audio;
+    public GameObject reticle;
+    SceneLoadIn screenFade;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +41,8 @@ public class MenuPause : MonoBehaviour
                 Debug.Log("UnPause Please");
                 ResumeGame();
             }
-            
         }
-        
     }
-
-    
 
     //PauseState uses "P" key to Pause game
     public void PauseGame()
@@ -59,6 +57,7 @@ public class MenuPause : MonoBehaviour
         Time.fixedDeltaTime = 0;
         Cursor.lockState = CursorLockMode.None;
         Debug.Log("PauseGame Was called END");
+        reticle.SetActive(false);
     }
 
     //ResumeGame uses the "P key" or in-menu button to un-pause
@@ -71,6 +70,7 @@ public class MenuPause : MonoBehaviour
         Time.fixedDeltaTime = 0.02f;
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("ResumeGame Was called END");
+        reticle.SetActive(true);
     }
 
     //Option commits one random sinful act that cannot be spoken of on these holy grounds
@@ -90,6 +90,15 @@ public class MenuPause : MonoBehaviour
 
     //QuitToMenu quits to menu (thrilling)
     public void QuitToMenu()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+        screenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        screenFade.FadeOn();
+        Invoke("QuitLevel",1);
+    }
+
+    void QuitLevel()
     {
         Debug.Log("You have purchased Later");
         FindObjectOfType<AudioManager>().Play("MainMenu");
@@ -114,8 +123,6 @@ public class MenuPause : MonoBehaviour
         pausePanel.SetActive(true);
         optionPanel.SetActive(false);
         quitPanel.SetActive(false);
-        Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.02f;
 
     }
 }

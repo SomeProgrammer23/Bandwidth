@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\MenuPause.cs" />
     <Compile Include="Assets\Scripts\OnHoverBorder.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
+    <Compile Include="Assets\Scripts\SceneLoadIn.cs" />
     <Compile Include="Assets\Scripts\ShotGun.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\TempAIController.cs" />
