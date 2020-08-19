@@ -7,13 +7,42 @@ public class MenuMethods : MonoBehaviour
 {
     public GameObject mainPanel;
     public GameObject optionsPanel;
+    public GameObject levelStartPanel;
     private AudioManager Audio;
     SceneLoadIn ScreenFade;
 
-    //GameStart Loads and plays game scene 
-    public void GameStart()
+    private void Start()
     {
-        Invoke("StartGame", 1);
+        mainPanel.SetActive(true);
+        optionsPanel.SetActive(false);
+        levelStartPanel.SetActive(false);
+    }
+
+    //GameStart Loads and plays game scene 
+    public void GameStartOne()
+    {
+        Invoke("LevelOneStart", 1);
+        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        ScreenFade.FadeOn();
+    }
+
+    public void GameStartTwo()
+    {
+        Invoke("LevelTwoStart", 1);
+        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        ScreenFade.FadeOn();
+    }
+
+    public void GameStartThree()
+    {
+        Invoke("LevelThreeStart", 1);
+        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        ScreenFade.FadeOn();
+    }
+
+    public void GameStartFour()
+    {
+        Invoke("LevelFourStart", 1);
         ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         ScreenFade.FadeOn();
     }
@@ -36,11 +65,20 @@ public class MenuMethods : MonoBehaviour
     {
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
+        levelStartPanel.SetActive(false);
     }
 
-    void StartGame()
+    //StartGame opens the Level Select panel
+    public void StartGame()
     {
-        Debug.Log("yes");
+        mainPanel.SetActive(false);
+        levelStartPanel.SetActive(true);
+    }
+    
+    //LevelOneStart starts the game from the beginning
+    void LevelOneStart()
+    {
+        Debug.Log("LevelOneStart");
         FindObjectOfType<AudioManager>().Stop("MainMenu");
         FindObjectOfType<AudioManager>().Play("Level1");
         SceneManager.LoadScene(1);
@@ -48,5 +86,37 @@ public class MenuMethods : MonoBehaviour
         Audio.sceneChange = true;
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
+    }
+
+    //LevelTwoStart starts you from the beginning of the second level
+    void LevelTwoStart()
+    {
+        Debug.Log("LevelTwoStart");
+        FindObjectOfType<AudioManager>().Stop("MainMenu");
+        FindObjectOfType<AudioManager>().Play("Level2");
+        SceneManager.LoadScene(2);
+        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
+        Audio.sceneChange = true;
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+    }
+
+    //LevelThreeStart starts you from the beginning of the third level
+    void LevelThreeStart()
+    {
+        Debug.Log("LevelThreeStart");
+        FindObjectOfType<AudioManager>().Stop("MainMenu");
+        FindObjectOfType<AudioManager>().Play("Level3");
+        SceneManager.LoadScene(3);
+        Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
+        Audio.sceneChange = true;
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+    }
+
+    //LevelFourStart start you from the checkpoint in the third level
+    void LevelFourStart()
+    {
+
     }
 }
