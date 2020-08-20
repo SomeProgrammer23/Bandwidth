@@ -5,9 +5,7 @@ using UnityEngine;
 public class CreateEnemy : MonoBehaviour
 {
     public GameObject enemy;
-    public Transform spawn1;
-    public Transform spawn2;
-    public Transform spawn3;
+    public Transform[] spawns;
     private bool spawnOnce = true;
 
 
@@ -15,11 +13,15 @@ public class CreateEnemy : MonoBehaviour
     {
         if (other.name == "FPSController" && spawnOnce == true)
         {
-            Instantiate(enemy, spawn1.position, spawn1.rotation, transform.parent = spawn1.transform);
-            Instantiate(enemy, spawn2.position, spawn2.rotation, transform.parent = spawn2.transform);
-            Instantiate(enemy, spawn3.position ,spawn3.rotation, transform.parent = spawn3.transform);
+            for (int i = 0; i < spawns.Length; i++)
+            {
+                Instantiate(enemy, spawns[i].position, spawns[i].rotation, transform.parent = spawns[i].transform);
+            }
+
             spawnOnce = false;
         }
+
+        
     }
 
 }

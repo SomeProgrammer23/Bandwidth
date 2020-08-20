@@ -6,6 +6,7 @@ public class TutorialSwitcher : MonoBehaviour
 {
 
     CharacterControllerTest pickUp;
+    TimeManager_01 timeManager;
     public GameObject cam;
     public GameObject tutLookColl;
     public GameObject tutGunColl;
@@ -31,11 +32,18 @@ public class TutorialSwitcher : MonoBehaviour
         {
             tutTextGrab.SetActive(false);
             tutTextWalk.SetActive(true);
+            timeManager = GameObject.Find("EGO - TimeManager").GetComponent<TimeManager_01>();
+            timeManager.TutorialSwitch();
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 tutPanelOne.SetActive(false);
             }
         }
+        //else
+        //{
+        //    //timeManager = GameObject.Find("EGO - TimeManager").GetComponent<TimeManager_01>();
+        //    //timeManager.SlowTime();
+        //}
 
         //Tutorial RaySwitcher
         RaycastHit switcher;
@@ -64,5 +72,7 @@ public class TutorialSwitcher : MonoBehaviour
     void LookTextOff()
     {
         textOff = true;
+        Time.timeScale = 0;
+        Time.fixedDeltaTime = 0;
     }
 }

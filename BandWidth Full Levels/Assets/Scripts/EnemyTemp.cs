@@ -12,7 +12,7 @@ public class EnemyTemp : MonoBehaviour
     private Transform target;
     //private HandGun HandGun;
     private Vector3 holdPos = new Vector3(0, 0, 0);
-
+    public GameObject hips;
 
     void Start()
     {
@@ -28,6 +28,11 @@ public class EnemyTemp : MonoBehaviour
             gun.GetComponent<Rigidbody>().useGravity = false;
             gun.GetComponent<Rigidbody>().isKinematic = true;
             gun.transform.LookAt(target);
+
+            var rotation = Quaternion.LookRotation(target.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+            //hips.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+
             gun.GetComponent<Rigidbody>().velocity = holdPos;
             gun.GetComponent<Rigidbody>().angularVelocity = holdPos;
             this.GetComponent<Rigidbody>().useGravity = false;
@@ -46,9 +51,9 @@ public class EnemyTemp : MonoBehaviour
             gun.transform.parent = null;
             this.transform.parent = null;
             Destroy(this.GetComponent<TempAIController>());
-            Destroy(this.GetComponent<NavMeshAgent>());
+            //Destroy(this.GetComponent<NavMeshAgent>());
             Destroy(this);
-            
+            this.GetComponent<NavMeshAgent>().speed = 0;
         }
 
 
@@ -78,6 +83,9 @@ public class EnemyTemp : MonoBehaviour
             if(collision.relativeVelocity.magnitude > 2)
             {
                 alive = false;
+                this.GetComponent<Animator>().SetBool("isDead", true);
+                this.GetComponent<Animator>().SetBool("isIdle", false);
+                this.GetComponent<Collider>().enabled = false;
             }
         }
     }
