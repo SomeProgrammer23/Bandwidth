@@ -15,7 +15,10 @@ public class TutorialSwitcher : MonoBehaviour
     public GameObject tutPanelOne;
     public GameObject tutTextWalk;
     public GameObject tutTextGun;
+    public GameObject keepMovingText;
     private bool textOff = false;
+    private bool timeSlow = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +35,13 @@ public class TutorialSwitcher : MonoBehaviour
         {
             tutTextGrab.SetActive(false);
             tutTextWalk.SetActive(true);
-            timeManager = GameObject.Find("EGO - TimeManager").GetComponent<TimeManager_01>();
-            timeManager.TutorialSwitch();
+            ReturnTime();
+            Invoke("WarningOff", 2);
+
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 tutPanelOne.SetActive(false);
+                
             }
         }
         //else
@@ -65,6 +70,23 @@ public class TutorialSwitcher : MonoBehaviour
             }
         }
     }
+    void ReturnTime()
+    {
+        if (timeSlow == true)
+        {
+            timeManager = GameObject.Find("EGO - TimeManager").GetComponent<TimeManager_01>();
+            timeManager.TutorialSwitch();
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
+            timeSlow = false;
+            keepMovingText.SetActive(true);
+        }
+    }
+    void WarningOff()
+    {
+        keepMovingText.SetActive(false);
+    }
+
     void SwitchOffTV()
     {
         tutTextGun.SetActive(false);

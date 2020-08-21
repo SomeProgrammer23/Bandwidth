@@ -21,6 +21,7 @@ public class MenuMethods : MonoBehaviour
     //GameStart Loads and plays game scene 
     public void GameStartOne()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Invoke("LevelOneStart", 1);
         ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         ScreenFade.FadeOn();
@@ -28,6 +29,7 @@ public class MenuMethods : MonoBehaviour
 
     public void GameStartTwo()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Invoke("LevelTwoStart", 1);
         ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         ScreenFade.FadeOn();
@@ -35,6 +37,7 @@ public class MenuMethods : MonoBehaviour
 
     public void GameStartThree()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Invoke("LevelThreeStart", 1);
         ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         ScreenFade.FadeOn();
@@ -42,6 +45,7 @@ public class MenuMethods : MonoBehaviour
 
     public void GameStartFour()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Invoke("LevelFourStart", 1);
         ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         ScreenFade.FadeOn();
@@ -50,6 +54,7 @@ public class MenuMethods : MonoBehaviour
     //GameExit Quits Game
     public void GameExit()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Application.Quit();
     }
 
@@ -58,6 +63,7 @@ public class MenuMethods : MonoBehaviour
     {
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("MenuOption");
     }
 
     //BackToMenu goes back to menu
@@ -66,6 +72,7 @@ public class MenuMethods : MonoBehaviour
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
         levelStartPanel.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("MenuOption");
     }
 
     //StartGame opens the Level Select panel
@@ -73,6 +80,7 @@ public class MenuMethods : MonoBehaviour
     {
         mainPanel.SetActive(false);
         levelStartPanel.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("MenuOption");
     }
     
     //LevelOneStart starts the game from the beginning

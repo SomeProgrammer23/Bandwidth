@@ -67,7 +67,6 @@ public class EnemyTemp : MonoBehaviour
         {
             if (detectHit.collider == GameObject.Find("HitBox").GetComponent<Collider>())
             {
-                Debug.Log("hit");
                 if (other.name == "FPSController" && alive == true)
                 {
                     gun.GetComponent<Animator>().SetTrigger("Fire");

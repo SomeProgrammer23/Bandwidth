@@ -58,11 +58,13 @@ public class MenuPause : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Debug.Log("PauseGame Was called END");
         reticle.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("MenuOption");
     }
 
     //ResumeGame uses the "P key" or in-menu button to un-pause
     public void ResumeGame()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Debug.Log("ResumeGame Was called START");
         isPaused = false;
         godPanel.SetActive(false);
@@ -76,6 +78,7 @@ public class MenuPause : MonoBehaviour
     //Option commits one random sinful act that cannot be spoken of on these holy grounds
     public void Option()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Debug.Log("YOU ARE A SINNER");
         pausePanel.SetActive(false);
         optionPanel.SetActive(true);
@@ -84,6 +87,7 @@ public class MenuPause : MonoBehaviour
     //QuitGame does quit the game (presumably)
     public void QuitGame()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Debug.Log("YOU HAVE CANCELLED EXISTENCE");
         Application.Quit();
     }
@@ -91,6 +95,7 @@ public class MenuPause : MonoBehaviour
     //QuitToMenu quits to menu (thrilling)
     public void QuitToMenu()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
         screenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
@@ -111,6 +116,7 @@ public class MenuPause : MonoBehaviour
     //QuitChoose lets you choose the amount of quit you would like to purchase from my store
     public void QuitChoose()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Debug.Log("Welcome to Choosi");
         pausePanel.SetActive(false);
         quitPanel.SetActive(true);
@@ -119,6 +125,7 @@ public class MenuPause : MonoBehaviour
     //BackToMenu undoes your choices if you happen to make a stupid click desicion
     public void BackToMenu()
     {
+        FindObjectOfType<AudioManager>().Play("MenuOption");
         Debug.Log("Le Repause");
         pausePanel.SetActive(true);
         optionPanel.SetActive(false);
