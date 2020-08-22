@@ -48,7 +48,7 @@ public class MachineGun : MonoBehaviour
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
         tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
         Destroy(GameObject.Find("MuzzleFlash(Clone)"), 0.5f);
-
+        FindObjectOfType<AudioManager>().Play("MachinegunFire");
         --rounds;
         //Destroy(GameObject.Find("Bullet_45mm_Casing(Clone)"), 1f);
 

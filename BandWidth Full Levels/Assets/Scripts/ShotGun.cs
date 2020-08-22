@@ -53,7 +53,7 @@ public class ShotGun : MonoBehaviour
         Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(30, 0, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward - (barrelLocation.up / 15)) * shotPower, ForceMode.Impulse);
         Instantiate(bulletPrefab, barrelLocation.position, (barrelLocation.rotation * Quaternion.Euler(-30, 0, 0))).GetComponent<Rigidbody>().AddForce((barrelLocation.forward + (barrelLocation.up / 15)) * shotPower, ForceMode.Impulse);
         tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
-
+        FindObjectOfType<AudioManager>().Play("ShotgunFire");
         Destroy(GameObject.Find("MuzzleFlash(Clone)"), 0.5f);
         --rounds;
         //Destroy(GameObject.Find("Bullet_45mm_Casing(Clone)"), 1f);

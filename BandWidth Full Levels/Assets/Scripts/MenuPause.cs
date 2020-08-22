@@ -108,6 +108,9 @@ public class MenuPause : MonoBehaviour
         Debug.Log("You have purchased Later");
         FindObjectOfType<AudioManager>().Play("MainMenu");
         FindObjectOfType<AudioManager>().Stop("Level1");
+        FindObjectOfType<AudioManager>().Stop("Level2");
+        FindObjectOfType<AudioManager>().Stop("Level3");
+        FindObjectOfType<AudioManager>().Stop("Level4");
         SceneManager.LoadScene(0);
         Audio = GameObject.Find("EGO - AudioManager").GetComponent<AudioManager>();
         Audio.sceneChange = true;

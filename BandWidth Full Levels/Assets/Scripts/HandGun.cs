@@ -47,7 +47,7 @@ public class HandGun : MonoBehaviour
         GameObject tempFlash;
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
         tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
-
+        FindObjectOfType<AudioManager>().Play("HandgunFire");
         Destroy(GameObject.Find("MuzzleFlash(Clone)"), 0.5f);
         --rounds;
         //Destroy(GameObject.Find("Bullet_45mm_Casing(Clone)"), 1f);

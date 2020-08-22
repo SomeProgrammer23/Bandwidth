@@ -86,6 +86,7 @@ public class EnemyTemp : MonoBehaviour
                 this.GetComponent<Animator>().SetBool("isDead", true);
                 this.GetComponent<Animator>().SetBool("isIdle", false);
                 this.GetComponent<Collider>().enabled = false;
+                FindObjectOfType<AudioManager>().Play("OnCollide");
             }
         }
     }

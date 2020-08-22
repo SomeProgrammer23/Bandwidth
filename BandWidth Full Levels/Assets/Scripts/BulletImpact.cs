@@ -33,6 +33,7 @@ public class BulletImpact : MonoBehaviour
         if (this.transform.IsChildOf(parent) == false)
         {
             Invoke("DestroyMe", 1f);
+            FindObjectOfType<AudioManager>().Play("OnCollide");
         }
 
         if (collision.collider.name == "FPSController")
