@@ -16,7 +16,7 @@ public class EnemyTemp : MonoBehaviour
 
     void Start()
     {
-        
+        gun.GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class EnemyTemp : MonoBehaviour
 
             var rotation = Quaternion.LookRotation(target.position - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
-            //hips.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+            //gun.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
 
             gun.GetComponent<Rigidbody>().velocity = holdPos;
             gun.GetComponent<Rigidbody>().angularVelocity = holdPos;
@@ -45,6 +45,7 @@ public class EnemyTemp : MonoBehaviour
             gun.GetComponent<Rigidbody>().useGravity = true;
             gun.GetComponent<Rigidbody>().isKinematic = false;
             gun.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            gun.GetComponent<Collider>().enabled = true;
             this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             this.GetComponent<Rigidbody>().useGravity = true;
             this.GetComponent<Rigidbody>().isKinematic = false;

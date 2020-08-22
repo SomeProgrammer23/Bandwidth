@@ -59,15 +59,15 @@ public class AudioManager : MonoBehaviour
         {
             Play("Level1");
         }
-        else if (scene.name == "Level 2")
+        else if (scene.name == "Level2")
         {
             Play("Level2");
         }
-        else if (scene.name == "Level 3")
+        else if (scene.name == "Level3")
         {
             Play("Level3");
         }
-        else if (scene.name == "Level 4")
+        else if (scene.name == "Level4")
         {
             Play("Level4");
         }

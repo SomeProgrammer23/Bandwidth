@@ -7458,12 +7458,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &567981036 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1339305156478712912, guid: fe02d698edf76624590799723951796a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1838460301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &569316692
 GameObject:
   m_ObjectHideFlags: 0
@@ -23055,79 +23049,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1339305156192654355, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156226516737, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseOptionBack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156478712912, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156478712912, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Name
-      value: OptionsPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 1339305156495030087, guid: fe02d698edf76624590799723951796a,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1339305156775206499, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseOption
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156775206509, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Option
-      objectReference: {fileID: 0}
     - target: {fileID: 1339305156940761078, guid: fe02d698edf76624590799723951796a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156940761078, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305156940761078, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157079326770, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157151375524, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157151375524, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157151375524, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157171126078, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1339305157271215675, guid: fe02d698edf76624590799723951796a,
@@ -23135,36 +23064,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1339305157506060604, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseOptionText
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157506060606, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_Text
-      value: Options
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157725544377, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1339305157725544378, guid: fe02d698edf76624590799723951796a,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 857242936}
-    - target: {fileID: 1339305157725544378, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157725544379, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: optionPanel
-      value: 
-      objectReference: {fileID: 567981036}
     - target: {fileID: 1339305157725544379, guid: fe02d698edf76624590799723951796a,
         type: 3}
       propertyPath: reticle
@@ -23174,11 +23078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157725544382, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1339305157725544383, guid: fe02d698edf76624590799723951796a,
         type: 3}
@@ -23283,11 +23182,6 @@ PrefabInstance:
     - target: {fileID: 1339305157725544383, guid: fe02d698edf76624590799723951796a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339305157746671371, guid: fe02d698edf76624590799723951796a,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

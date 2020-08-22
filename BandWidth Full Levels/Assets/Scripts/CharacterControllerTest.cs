@@ -16,7 +16,7 @@ public class CharacterControllerTest : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     public TimeManager_01 timeManager;
     private MenuPause menuPauseRef;
-    public bool firstPickup;
+    public bool firstPickup = false;
 
     private CollisionFlags CollisionHit;
     private CharacterController fpsController;
@@ -28,7 +28,6 @@ public class CharacterControllerTest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuPauseRef = GameObject.Find("PauseMenu").GetComponent<MenuPause>();
         fpsController = GetComponent<CharacterController>();
-        firstPickup = false;
     }
 
     // Update is called once per frame
