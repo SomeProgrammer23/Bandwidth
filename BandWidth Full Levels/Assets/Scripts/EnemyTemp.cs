@@ -13,10 +13,14 @@ public class EnemyTemp : MonoBehaviour
     //private HandGun HandGun;
     private Vector3 holdPos = new Vector3(0, 0, 0);
     public GameObject hips;
-
+    public bool gunCollider;
     void Start()
     {
-        gun.GetComponent<Collider>().enabled = false;
+        if(gunCollider == false)
+        {
+            gun.GetComponent<Collider>().enabled = false;
+        }
+        
     }
 
     // Update is called once per frame
@@ -55,6 +59,7 @@ public class EnemyTemp : MonoBehaviour
             //Destroy(this.GetComponent<NavMeshAgent>());
             Destroy(this);
             this.GetComponent<NavMeshAgent>().speed = 0;
+            Destroy(gameObject, 5);
         }
 
 

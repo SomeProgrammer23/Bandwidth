@@ -695,6 +695,7 @@ MonoBehaviour:
   gun: {fileID: 1360535673823794544}
   barrel: {fileID: 1362954489801343856}
   hips: {fileID: 6052854424567153134}
+  gunCollider: 0
 --- !u!195 &-8536293577902408989
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -1802,6 +1802,7 @@ MonoBehaviour:
   gun: {fileID: 1094223982324038238}
   barrel: {fileID: 1094223983327810991}
   hips: {fileID: 1929200251568830164}
+  gunCollider: 0
 --- !u!1001 &1607837403115471187
 PrefabInstance:
   m_ObjectHideFlags: 0

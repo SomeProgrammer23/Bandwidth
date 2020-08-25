@@ -6,7 +6,7 @@ public class CreateEnemy : MonoBehaviour
 {
     public GameObject enemy;
     public Transform[] spawns;
-    private bool spawnOnce = true;
+    public bool spawnOnce = true;
 
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +22,14 @@ public class CreateEnemy : MonoBehaviour
         }
 
         
+    }
+
+    void SpawnEnemies()
+    {
+        for (int i = 0; i < spawns.Length; i++)
+        {
+            Instantiate(enemy, spawns[i].position, spawns[i].rotation, transform.parent = spawns[i].transform);
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrainCrash : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class TrainCrash : MonoBehaviour
     public GameObject wall;
     void Start()
     {
-        Invoke("TrainCrashing", 5);
+        Invoke("TrainCrashing", 10);
     }
 
     void TrainCrashing()
@@ -19,5 +20,15 @@ public class TrainCrash : MonoBehaviour
     public void WallBreak()
     {
         wall.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name == "FPSController")
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+
+        }
     }
 }

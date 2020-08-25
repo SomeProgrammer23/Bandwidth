@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9767360ba1a524cb2fb4fbe5fc6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {fileID: 2100000, guid: 611e09173a2b48146a703148db1c59ca, type: 2}
-  nonBorder: {fileID: 2100000, guid: e22012cd6778dbf44b4bd1f2e42140b9, type: 2}
+  border: {fileID: 2100000, guid: 16d5e59b9500b63458b5b1660f85e2ef, type: 2}
+  nonBorder: {fileID: 2100000, guid: 16d5e59b9500b63458b5b1660f85e2ef, type: 2}
   throwForce: 20
   held: 0
   objectPoint: {fileID: 7227732055700689229}
