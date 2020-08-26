@@ -12,12 +12,11 @@ public class MachineGun : MonoBehaviour
     public Transform casingExitLocation;
     private Transform parent;
     public int rounds = 8;
-
-
     public float shotPower = 100f;
 
     void Start()
     {
+        //Assigns player hand as parent
         parent = GameObject.Find("PlayerHand").transform;
         if (barrelLocation == null)
             barrelLocation = transform;
@@ -25,13 +24,13 @@ public class MachineGun : MonoBehaviour
 
     void Update()
     {
+        //Starts animation to begin on input
         if (this.transform.IsChildOf(parent))
         {
             if (Input.GetButton("Fire1"))
             {
                 if (rounds > 0)
                 {
-                    //--rounds;
                     GetComponent<Animator>().SetTrigger("Fire");
 
                 }
@@ -39,23 +38,18 @@ public class MachineGun : MonoBehaviour
         }
     }
 
+    //This method is used to shoot, and is called during animation.
     public void Shoot()
     {
-        //  GameObject bullet;
-        //  bullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
-        // bullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
         GameObject tempFlash;
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.Impulse);
         tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
         Destroy(GameObject.Find("MuzzleFlash(Clone)"), 0.5f);
         FindObjectOfType<AudioManager>().Play("MachinegunFire");
         --rounds;
-        //Destroy(GameObject.Find("Bullet_45mm_Casing(Clone)"), 1f);
-
-        //  Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
-
     }
 
+    //Creates a casing object, and is called during animation
     void CasingRelease()
     {
          GameObject casing;

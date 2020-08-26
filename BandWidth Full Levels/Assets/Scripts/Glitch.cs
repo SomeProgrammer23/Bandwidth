@@ -17,8 +17,8 @@ public class Glitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Creates a pulsing glitch effect
         float lineness = Mathf.PingPong(Time.time, 1);
-        //rend.material.SetFloat("_LineSize", lineness);
         glitch.SetFloat("_LineSize", lineness);
     }
 }

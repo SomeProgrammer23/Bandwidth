@@ -11,6 +11,7 @@ public class InvisWall : MonoBehaviour
         
     }
 
+    //Enables wall to create an area you cannot leave
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "FPSController")

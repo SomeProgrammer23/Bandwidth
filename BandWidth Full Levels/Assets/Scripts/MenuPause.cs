@@ -22,7 +22,6 @@ public class MenuPause : MonoBehaviour
         pausePanel.SetActive(true);
         optionPanel.SetActive(false);
         quitPanel.SetActive(false);
-        //charContAccess = GetComponent<CharacterControllerTest>();
     }
 
     // Update is called once per frame
@@ -30,15 +29,12 @@ public class MenuPause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Go Go P Key");
             if (isPaused == false)
             {
-                Debug.Log("Pause Please");
                 PauseGame();
             }
             else if (isPaused == true)
             {
-                Debug.Log("UnPause Please");
                 ResumeGame();
             }
         }
@@ -47,7 +43,6 @@ public class MenuPause : MonoBehaviour
     //PauseState uses "P" key to Pause game
     public void PauseGame()
     {
-        Debug.Log("PauseGame Was called START");
         isPaused = true;
         godPanel.SetActive(true);
         pausePanel.SetActive(true);
@@ -56,7 +51,6 @@ public class MenuPause : MonoBehaviour
         Time.timeScale = 0;
         Time.fixedDeltaTime = 0;
         Cursor.lockState = CursorLockMode.None;
-        Debug.Log("PauseGame Was called END");
         reticle.SetActive(false);
         FindObjectOfType<AudioManager>().Play("MenuOption");
     }
@@ -65,34 +59,30 @@ public class MenuPause : MonoBehaviour
     public void ResumeGame()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Debug.Log("ResumeGame Was called START");
         isPaused = false;
         godPanel.SetActive(false);
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("ResumeGame Was called END");
         reticle.SetActive(true);
     }
 
-    //Option commits one random sinful act that cannot be spoken of on these holy grounds
+    //Option opens an options menu (called with button click)
     public void Option()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Debug.Log("YOU ARE A SINNER");
         pausePanel.SetActive(false);
         optionPanel.SetActive(true);
     }
 
-    //QuitGame does quit the game (presumably)
+    //QuitGame quits to desktop (called with button click)
     public void QuitGame()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Debug.Log("YOU HAVE CANCELLED EXISTENCE");
         Application.Quit();
     }
 
-    //QuitToMenu quits to menu (thrilling)
+    //QuitToMenu quits to menu (called with button click)
     public void QuitToMenu()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
@@ -105,7 +95,6 @@ public class MenuPause : MonoBehaviour
 
     void QuitLevel()
     {
-        Debug.Log("You have purchased Later");
         FindObjectOfType<AudioManager>().Play("MainMenu");
         FindObjectOfType<AudioManager>().Stop("Level1");
         FindObjectOfType<AudioManager>().Stop("Level2");
@@ -116,23 +105,20 @@ public class MenuPause : MonoBehaviour
         Audio.sceneChange = true;
     }
 
-    //QuitChoose lets you choose the amount of quit you would like to purchase from my store
+    //QuitChoose bring up the option to choose to quit to menu or to desktop (called with button click)
     public void QuitChoose()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Debug.Log("Welcome to Choosi");
         pausePanel.SetActive(false);
         quitPanel.SetActive(true);
     }
 
-    //BackToMenu undoes your choices if you happen to make a stupid click desicion
+    //BackToMenu takes you to the previous menu (called with button click)
     public void BackToMenu()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Debug.Log("Le Repause");
         pausePanel.SetActive(true);
         optionPanel.SetActive(false);
         quitPanel.SetActive(false);
-
     }
 }

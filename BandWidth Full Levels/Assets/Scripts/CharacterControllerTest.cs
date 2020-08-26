@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterControllerTest : MonoBehaviour
 {
-    //GOTTA GET THAT BURGER
 
     public GameObject fpsCam;
     public GameObject body;
@@ -61,15 +60,13 @@ public class CharacterControllerTest : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Time Fiddler
+        //When movement keys are pressed, slows time
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A))
         {
             if (menuPauseRef.isPaused == false)
             {
                 timeManager.SlowTime();
             }
-
-            //moveSpeed = 120.0f;
         }
         else
         {
@@ -77,9 +74,6 @@ public class CharacterControllerTest : MonoBehaviour
             {
                 timeManager.ReturnTime();
             }
-
-
-            //moveSpeed = 6.0f;
         }
 
         //Movement
@@ -91,15 +85,6 @@ public class CharacterControllerTest : MonoBehaviour
                 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
                 movement = transform.TransformDirection(movement);
             }
-            
-            //movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))/*.normalized*/;
-            //movement = transform.TransformDirection(movement);
-            //movement *= moveSpeed;
-            //if (Input.GetButtonDown("Jump"))
-            //{
-            //    movement.y = jumpSpeed;
-            //}
-
         }
         movement.Normalize();
         movement.y -= gravity * Time.deltaTime;
@@ -107,6 +92,7 @@ public class CharacterControllerTest : MonoBehaviour
 
         CollisionHit = fpsController.Move(movement * Time.fixedUnscaledDeltaTime);
     }
+
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {

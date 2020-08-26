@@ -7,6 +7,7 @@ public class ContructionElevatorExit : MonoBehaviour
 {
     SceneLoadIn screenFade;
 
+    //Calls method used to exit the level
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "FPSController")

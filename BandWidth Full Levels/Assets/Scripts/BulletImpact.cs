@@ -18,6 +18,7 @@ public class BulletImpact : MonoBehaviour
     
     void Update()
     {
+        //Detects whether a Bullet is being held, and deletes bullet after five seconds of not being held
         if (this.transform.IsChildOf(parent) == false)
         {
             Invoke("DestroyMe", 5f);
@@ -30,12 +31,13 @@ public class BulletImpact : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //If bullet is not held, and collides with anything, is deleted after one second
         if (this.transform.IsChildOf(parent) == false)
         {
             Invoke("DestroyMe", 1f);
             FindObjectOfType<AudioManager>().Play("OnCollide");
         }
-
+        //Kill player when player is hit by bullet
         if (collision.collider.name == "FPSController")
         {
             OnHoverBorder.singlePickup = true;
@@ -45,6 +47,7 @@ public class BulletImpact : MonoBehaviour
         }
     }
 
+    //Destroys gameObject when called
     void DestroyMe()
     {
         Destroy(gameObject);

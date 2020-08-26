@@ -18,19 +18,6 @@ public class OnHoverBorder : MonoBehaviour
     public bool shotGun;
     CharacterControllerTest firstPickup;
 
-    //void OnMouseOver()
-    //{
-    //    GetComponent<Renderer>().material = border;
-    //    pickup = true;
-    //}
-
-
-    //void OnMouseExit()
-    //{
-    //    GetComponent<Renderer>().material = nonBorder;
-    //    pickup = false;
-    //}
-
     private void Start()
     {
         camPos = GameObject.Find("FirstPersonCharacter").transform;
@@ -40,7 +27,7 @@ public class OnHoverBorder : MonoBehaviour
 
     void Update()
     {
-
+        //Shows that object can be picked up when within certain distance
         RaycastHit detect;
         if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out detect, range))
         {
@@ -62,7 +49,7 @@ public class OnHoverBorder : MonoBehaviour
             pickup = false;
         }
 
-
+        //Allows for pickup of objects dropped by enemies
         if (this.transform.IsChildOf(GameObject.Find("EGO - Enemies").transform) == false)
         {
             if (pickup == true)
@@ -78,7 +65,6 @@ public class OnHoverBorder : MonoBehaviour
                     this.transform.parent = GameObject.Find("PlayerHand").transform;
 
                     Invoke("PickupCheck", 0.001f);
-                    //singlePickup = false;
                     firstPickup.firstPickup = true;
                     if(shotGun == true)
                     {
@@ -92,7 +78,7 @@ public class OnHoverBorder : MonoBehaviour
             }
             this.tag = "Projectile";
         }
-
+        //Makes held item point at a point dictated by a raycast
         RaycastHit hit;
         if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out hit))
         {
@@ -100,15 +86,15 @@ public class OnHoverBorder : MonoBehaviour
             if (held == true)
             {
                 objectPoint.transform.LookAt(looker);
-                this.transform.LookAt(looker/*, new Vector3 (0,0,0)*/);
+                this.transform.LookAt(looker);
             }
         }
 
         if (held == true)
         {
+            //Throws Held Object
             if (Input.GetKeyDown(KeyCode.Mouse1) && singlePickup == false)
             {
-                //GetComponent<Rigidbody>().AddForce(0, 0, throwForce, ForceMode.Impulse);
                 GetComponent<Rigidbody>().AddForce(objectPoint.forward * throwForce, ForceMode.Impulse);
                 this.transform.parent = null;
                 GetComponent<Collider>().enabled = true;
@@ -116,7 +102,6 @@ public class OnHoverBorder : MonoBehaviour
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
                 held = false;
-                //singlePickup = true;
                 Invoke("PickupCheckAgain", 0.001f);
             }
         }
