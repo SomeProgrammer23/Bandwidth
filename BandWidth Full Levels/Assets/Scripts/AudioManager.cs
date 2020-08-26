@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-
+    
     public Sound[] sounds;
     public static AudioManager instance;
     private Slider backgroundMusic;
@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        //At scene start, plays appropriate background music
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "MainMenu")
         {
@@ -75,6 +76,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
+        //Allows for the sliders to change audio volume
         if (GameObject.Find("OptionsPanel") == true)
         {
             backgroundMusic = GameObject.Find("MusicSlider").GetComponent<Slider>();
@@ -128,7 +130,7 @@ public class AudioManager : MonoBehaviour
         if (s == null) //if a sound with that name cant be found
         {
             Debug.LogWarning("Sound: " + name + " not found");
-            return;    //reaturn means stop function (if there is no sound with that name it doesnt give an error)
+            return;    //return means stop function (if there is no sound with that name it doesnt give an error)
         }
             
         s.source.Play(); //plays the AudioSource

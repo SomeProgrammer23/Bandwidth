@@ -12,16 +12,19 @@ public class TrainCrash : MonoBehaviour
         Invoke("TrainCrashing", 10);
     }
 
+    //This makes the train in level 2 crash, allowing players to progress
     void TrainCrashing()
     {
         train.GetComponent<Animator>().SetBool("isCrashing", true);
     }
 
+    //This breaks the wall that blocks progress
     public void WallBreak()
     {
         wall.SetActive(false);
     }
 
+    //This kill players if the get hit by the train
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.name == "FPSController")

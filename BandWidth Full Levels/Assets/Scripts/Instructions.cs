@@ -6,26 +6,31 @@ public class Instructions : MonoBehaviour
 {
     public GameObject instruction;
     public bool isSwitch;
+    private bool displayOnce = false;
 
+
+    //Shows Instructions when situated in a trigger
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "FPSController")
         {
-            if (isSwitch == false)
+            if (isSwitch == false && displayOnce == false)
             {
                 
                 instruction.SetActive(true);
                 Invoke("TextOff", 1);
+                displayOnce = true;
             }
-            if (isSwitch == true)
+            if (isSwitch == true && displayOnce == false)
             {
                 instruction.SetActive(true);
-                
+                displayOnce = true;
             }
 
         }
     }
 
+    //Closes Instruction Based on particular key input
     private void OnTriggerStay(Collider other)
     {
         if (other.name == "FPSController")
@@ -41,7 +46,7 @@ public class Instructions : MonoBehaviour
         }
         
     }
-
+    //Closes Instruction when leaving a trigger
     private void OnTriggerExit(Collider other)
     {
         if (other.name == "FPSController")

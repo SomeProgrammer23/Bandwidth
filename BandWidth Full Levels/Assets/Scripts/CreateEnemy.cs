@@ -8,7 +8,7 @@ public class CreateEnemy : MonoBehaviour
     public Transform[] spawns;
     public bool spawnOnce = true;
 
-
+    //Spawns Enemies on a trigger enter Once
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "FPSController" && spawnOnce == true)
@@ -24,6 +24,7 @@ public class CreateEnemy : MonoBehaviour
         
     }
 
+    //Spawns Enemies
     void SpawnEnemies()
     {
         for (int i = 0; i < spawns.Length; i++)

@@ -7,17 +7,20 @@ public class TimeManager_01 : MonoBehaviour
     public float slowDownLength = 2f;
     public bool tutorialOff = false;
 
+    //Method used to slow time when moving
     public void SlowTime()
     {
         Time.timeScale = slowSpeed;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
+    //This turns the tutorial off
     public void TutorialSwitch()
     {
         tutorialOff = !tutorialOff;
     }
     
+    //Method used to bring time back to normal when not moving
     public void ReturnTime()
     {
         if(tutorialOff == true)

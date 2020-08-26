@@ -24,12 +24,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent.updateRotation = false;
             agent.updatePosition = true;
             target = GameObject.Find("FPSController").transform;
-            //m_IsGrounded = true;
         }
 
 
         private void Update()
         {
+            //Uses AI to apply movement to game
             if (target != null)
             {
                 agent.SetDestination(target.position);

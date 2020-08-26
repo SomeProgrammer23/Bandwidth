@@ -31,11 +31,12 @@ public class TutorialSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This switches the tutorials from pickup to walking
         if (pickUp.firstPickup)
         {
             tutTextGrab.SetActive(false);
             tutTextWalk.SetActive(true);
-            ReturnTime();
+            //ReturnTime();
             Invoke("WarningOff", 2);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
@@ -44,11 +45,6 @@ public class TutorialSwitcher : MonoBehaviour
                 
             }
         }
-        //else
-        //{
-        //    //timeManager = GameObject.Find("EGO - TimeManager").GetComponent<TimeManager_01>();
-        //    //timeManager.SlowTime();
-        //}
 
         //Tutorial RaySwitcher
         RaycastHit switcher;
@@ -70,6 +66,8 @@ public class TutorialSwitcher : MonoBehaviour
             }
         }
     }
+
+    //Returns time to normal once first object gets picked up
     void ReturnTime()
     {
         if (timeSlow == true)
@@ -82,15 +80,20 @@ public class TutorialSwitcher : MonoBehaviour
             keepMovingText.SetActive(true);
         }
     }
+
+    //Tells player to keep moving (as to not die)
     void WarningOff()
     {
         keepMovingText.SetActive(false);
     }
 
+    //Switches off message on TV
     void SwitchOffTV()
     {
         tutTextGun.SetActive(false);
     }
+
+    //Freezes time on load
     void LookTextOff()
     {
         textOff = true;

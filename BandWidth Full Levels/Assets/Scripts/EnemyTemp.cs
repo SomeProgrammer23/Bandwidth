@@ -26,6 +26,7 @@ public class EnemyTemp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Dictates how an enemy will act When alive (gun being held, aiming)
         if(alive == true)
         {
             target = GameObject.Find("FPSController").transform;
@@ -44,6 +45,7 @@ public class EnemyTemp : MonoBehaviour
             this.GetComponent<Rigidbody>().angularVelocity = holdPos;
             this.GetComponent<Rigidbody>().isKinematic = true;
         }
+        //And when dead
         else
         {
             gun.GetComponent<Rigidbody>().useGravity = true;
@@ -68,6 +70,7 @@ public class EnemyTemp : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //Looks for the player, and if the player is seen, will shoot at the player
         RaycastHit detectHit;
         if (Physics.Raycast(barrel.position, barrel.forward, out detectHit))
         {
@@ -83,6 +86,7 @@ public class EnemyTemp : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Collisions with gameObjects moving above a certain velocity will kill a player
         if(collision.collider.tag == "Projectile")
         {
             if(collision.relativeVelocity.magnitude > 2)

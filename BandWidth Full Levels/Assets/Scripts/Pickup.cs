@@ -6,6 +6,8 @@ public class Pickup : MonoBehaviour
 {
     public GameObject hand;
     public float throwForce = 4.0f;
+
+    //Used to grab objects (now obsolete I believe)
     public void Hold()
     {
         GetComponent<Collider>().enabled = false;
@@ -16,6 +18,7 @@ public class Pickup : MonoBehaviour
 
     }
 
+    //Used to throw  held objects (now obsolete)
     public void Throw()
     {
         this.transform.parent = null;

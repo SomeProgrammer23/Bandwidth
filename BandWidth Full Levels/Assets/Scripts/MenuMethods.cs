@@ -13,12 +13,13 @@ public class MenuMethods : MonoBehaviour
 
     private void Start()
     {
+        //Makes sure that first menu seen is the main menu
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
         levelStartPanel.SetActive(false);
     }
 
-    //GameStart Loads and plays game scene 
+    //GameStart Loads and plays game scene corresponding to the Level Selected
     public void GameStartOne()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
@@ -125,6 +126,6 @@ public class MenuMethods : MonoBehaviour
     //LevelFourStart start you from the checkpoint in the third level
     void LevelFourStart()
     {
-
+        //Empty
     }
 }
