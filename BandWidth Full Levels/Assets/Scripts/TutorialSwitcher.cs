@@ -36,7 +36,7 @@ public class TutorialSwitcher : MonoBehaviour
         {
             tutTextGrab.SetActive(false);
             tutTextWalk.SetActive(true);
-            //ReturnTime();
+            ReturnTime();
             Invoke("WarningOff", 2);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
