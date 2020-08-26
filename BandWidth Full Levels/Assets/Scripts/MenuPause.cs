@@ -100,6 +100,7 @@ public class MenuPause : MonoBehaviour
         Time.fixedDeltaTime = 0.02f;
         screenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
         screenFade.FadeOn();
+        OnHoverBorder.singlePickup = true;
         Invoke("QuitLevel",1);
     }
 
