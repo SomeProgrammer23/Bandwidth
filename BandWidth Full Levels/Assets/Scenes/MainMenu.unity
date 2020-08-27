@@ -3087,6 +3087,8 @@ MonoBehaviour:
   mainPanel: {fileID: 463247356}
   optionsPanel: {fileID: 1693069129}
   levelStartPanel: {fileID: 2127712182}
+  levelThree: {fileID: 1471628901}
+  levelFour: {fileID: 1773203379}
 --- !u!1 &1566141880
 GameObject:
   m_ObjectHideFlags: 0

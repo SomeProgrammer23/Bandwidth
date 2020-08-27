@@ -6,8 +6,9 @@ public class SceneLoadIn : MonoBehaviour
 {
     public GameObject screenFadeOut;
     public GameObject screenFadeIn;
+    public bool transitionFinish = false;
 
-    
+
     void Start()
     {
         Invoke("FadeOff", 1);
@@ -17,6 +18,7 @@ public class SceneLoadIn : MonoBehaviour
     void FadeOff()
     {
         screenFadeOut.SetActive(false);
+        transitionFinish = true;
     }
     public void FadeOn()
     {

@@ -9814,6 +9814,7 @@ GameObject:
   - component: {fileID: 730464705}
   - component: {fileID: 730464704}
   - component: {fileID: 730464703}
+  - component: {fileID: 730464708}
   - component: {fileID: 730464707}
   m_Layer: 0
   m_Name: Cube (2)
@@ -9932,6 +9933,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instruction: {fileID: 156314708}
   isSwitch: 0
+--- !u!114 &730464708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730464701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4210eeab2bf7be14492171d9923f273a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepMovingText: {fileID: 553089375}
 --- !u!1001 &741436877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22503,6 +22517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenFadeOut: {fileID: 1998294970}
   screenFadeIn: {fileID: 766038076}
+  transitionFinish: 0
 --- !u!4 &1714142394
 Transform:
   m_ObjectHideFlags: 0

@@ -49,5 +49,6 @@ public class Level2End : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("MainMenu");
         OnHoverBorder.singlePickup = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

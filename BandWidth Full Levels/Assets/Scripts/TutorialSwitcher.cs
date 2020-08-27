@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialSwitcher : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class TutorialSwitcher : MonoBehaviour
     public GameObject tutTextGun;
     public GameObject keepMovingText;
     private bool textOff = false;
-    private bool timeSlow = true;
+    private bool timeSlow = true; 
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +39,19 @@ public class TutorialSwitcher : MonoBehaviour
             tutTextWalk.SetActive(true);
             ReturnTime();
             Invoke("WarningOff", 2);
+            
+
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 tutPanelOne.SetActive(false);
                 
             }
+        }
+        if (timeSlow == true && textOff == true)
+        {
+            Time.timeScale = 0;
+            Time.fixedDeltaTime = 0;
         }
 
         //Tutorial RaySwitcher

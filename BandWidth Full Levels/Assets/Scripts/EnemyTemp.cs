@@ -89,7 +89,7 @@ public class EnemyTemp : MonoBehaviour
         //Collisions with gameObjects moving above a certain velocity will kill a player
         if(collision.collider.tag == "Projectile")
         {
-            if(collision.relativeVelocity.magnitude > 2)
+            if(collision.relativeVelocity.magnitude > 5)
             {
                 alive = false;
                 this.GetComponent<Animator>().SetBool("isDead", true);

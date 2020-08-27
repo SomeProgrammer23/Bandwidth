@@ -40,22 +40,27 @@ public class MenuPause : MonoBehaviour
         }
     }
 
-    //PauseState uses "P" key to Pause game
+    //PauseState uses "P" key or "ESC" to Pause game
     public void PauseGame()
     {
-        isPaused = true;
-        godPanel.SetActive(true);
-        pausePanel.SetActive(true);
-        optionPanel.SetActive(false);
-        quitPanel.SetActive(false);
-        Time.timeScale = 0;
-        Time.fixedDeltaTime = 0;
-        Cursor.lockState = CursorLockMode.None;
-        reticle.SetActive(false);
-        FindObjectOfType<AudioManager>().Play("MenuOption");
+        screenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        if (screenFade.transitionFinish == true)
+        {
+            isPaused = true;
+            godPanel.SetActive(true);
+            pausePanel.SetActive(true);
+            optionPanel.SetActive(false);
+            quitPanel.SetActive(false);
+            Time.timeScale = 0;
+            Time.fixedDeltaTime = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            reticle.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("MenuOption");
+        }
     }
 
-    //ResumeGame uses the "P key" or in-menu button to un-pause
+    //ResumeGame uses the "P" / "ESC" key or in-menu button to un-pause
     public void ResumeGame()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
@@ -64,6 +69,7 @@ public class MenuPause : MonoBehaviour
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         reticle.SetActive(true);
     }
 

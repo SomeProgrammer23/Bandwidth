@@ -25,6 +25,7 @@ public class CharacterControllerTest : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         menuPauseRef = GameObject.Find("PauseMenu").GetComponent<MenuPause>();
         fpsController = GetComponent<CharacterController>();
     }

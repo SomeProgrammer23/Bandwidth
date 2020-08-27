@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuMethods : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MenuMethods : MonoBehaviour
     public GameObject levelStartPanel;
     private AudioManager Audio;
     SceneLoadIn ScreenFade;
+
+    public GameObject levelThree;
+    public GameObject levelFour;
 
     private void Start()
     {
@@ -39,17 +43,21 @@ public class MenuMethods : MonoBehaviour
     public void GameStartThree()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Invoke("LevelThreeStart", 1);
-        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
-        ScreenFade.FadeOn();
+        levelThree.GetComponent<Text>().text = "Locked";
+        Invoke("LevelThreeTextBack", 2);
+        //Invoke("LevelThreeStart", 1);
+        //ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        //ScreenFade.FadeOn();
     }
 
     public void GameStartFour()
     {
         FindObjectOfType<AudioManager>().Play("MenuOption");
-        Invoke("LevelFourStart", 1);
-        ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
-        ScreenFade.FadeOn();
+        levelFour.GetComponent<Text>().text = "Locked";
+        Invoke("LevelFourTextBack", 2);
+        //Invoke("LevelFourStart", 1);
+        //ScreenFade = GameObject.Find("EGO - SceneTransition").GetComponent<SceneLoadIn>();
+        //ScreenFade.FadeOn();
     }
 
     //GameExit Quits Game
@@ -127,5 +135,15 @@ public class MenuMethods : MonoBehaviour
     void LevelFourStart()
     {
         //Empty
+    }
+
+    void LevelThreeTextBack()
+    {
+        levelThree.GetComponent<Text>().text = "Level Three";
+    }
+
+    void LevelFourTextBack()
+    {
+        levelFour.GetComponent<Text>().text = "Level Four";
     }
 }
